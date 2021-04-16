@@ -11,7 +11,7 @@ printf("_______________________________ resolve_small\n");
 	{
 		if (*stocka->a < stocka->median)
 			push(stocka, stockb, "pb small\n");
-		else	
+		else
 			rotate(stocka, "ra small\n");
 	}
 	resolve_less_than_five(stocka, stockb);

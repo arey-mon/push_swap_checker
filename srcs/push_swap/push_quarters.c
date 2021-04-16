@@ -22,22 +22,17 @@ void	push_first_quarter(t_main *main)
 	//printf("value you're gonna push is : %d\n", main->stocka.a[0]);
 
 // take care of size
-	// 1. if > median
 	if (main->stocka.a[0] >= main->stockb.median || main->stockb.size == 1)
 	{
 		push(&main->stocka, &main->stockb, "pb\n");
 		if (main->stockb.a[0] < main->stockb.a[1] && main->stockb.size > 4)
 			swap(&main->stockb, "sb\n");
 	}
-	// 2. if < median
 	else
 	{
 		push(&main->stocka, &main->stockb, "pb\n");
 		rotate(&main->stockb, "ra from first_quarter\n");
 	}
-	//	before push, check if it is > b[last]
-	//	you may want to insert the value at right spot
-	
 	if (main->stockb.size == 4)
 		resolve_less_than_five_b(&main->stockb);
 	//print_stacks_ps(main);
@@ -77,18 +72,23 @@ void		push_quarters(t_main *main, t_stock *stocka, int div)
 	(void)main;
 	int		last_a;
 
-	//printf("__________________________________ push_quarters\n");
+	printf("__________________________________ push_quarters\n");
+	print_stacks_ps(main);
 	last_a = stocka->a[stocka->size - 1];
 	find_smallest(stocka);
 	while (*stocka->a != last_a)
 	{
 		if (div == 0 && *stocka->a <= stocka->quarter)
 			push_first_quarter(main);
-		// I exit here
-		//print_stacks_ps(main);
-		//	if (div == 2)
-		//		exit (1);
-		//
+		/* I exit here
+			//print_stacks_ps(main);
+			if (div == 1)
+			{
+				print_stacks_ps(main);
+				printf("stockb->size after first_quarter push is : %lu\n", main->stockb.size);
+				exit (1);
+			}
+		*/
 		else if (div == 1 && *stocka->a > stocka->quarter && *stocka->a <= stocka->median)
 			 push_second_quarter(main);
 		else if (div == 2 && *stocka->a > stocka->median && *stocka->a <= stocka->three_quarters)
@@ -100,6 +100,6 @@ void		push_quarters(t_main *main, t_stock *stocka, int div)
 	}
 	if (stocka->size <= 5)
 		resolve_less_than_five(stocka, &main->stockb);
-	//printf("______________________ PRINTING AFTER PUSH_QUARTERS\n");
-	//print_stacks_ps(main);
+	printf("______________________ PRINTING AFTER PUSH_QUARTERS\n");
+	print_stacks_ps(main);
 }

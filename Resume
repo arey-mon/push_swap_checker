@@ -1,0 +1,30 @@
+RESOLVE
+5 <= 12 moves
+100 = <700 moves
+500 = <5300 moves
+
+TESTINGS
+1. make a lot of testings with instructions
+	change characters length to see if all is ok (ex : pa/rrr/rrbc/pac...)
+2. make a lot of tests involving operations and size
+3. value = 0
+4. size of arr = 1 || = 2
+
+ISSUES
+? program should not quit before all instructions are read,
+	!! even if instruction is wrong !
+	Not so sure...
+. if you have "2m" in stdin, it works. Thats is WRONG
+. if there is a '0' in args, it is not printed (but not an error)
+. if arg is '-' no error, also with '-a'
+. Stock B is not initialized. cf a.out >> rr
+. program contains some exit(1), but it impeaches free
+. resolve malloc
+. Makefile
+. norme
+
+QUESTIONS
+should we return ok
+- if !stacka and stackbordered
+- if both stack ordered 
+?
