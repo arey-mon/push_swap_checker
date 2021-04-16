@@ -31,11 +31,27 @@ void	insert_bigger_b(t_stock *stocka, t_stock *stockb, t_main *main)
 					}
 			}
 		resolve_last_a(stocka, main);
+		printf("print before push\n");
+		print_stacks_ps(main);
 		push(stockb, stocka, "pa ....\n");
+		printf("print after push, then going to resolve_last_a\n");
+		print_stacks_ps(main);
+		resolve_last_a(stocka, main);
 		while (i-- > 1)
 		{
+			printf("stockb->big = %d\n", stockb->big);
+			//find_biggest(stockb);
+			//if (stocka->a[stocka->size - 1] < stockb->a[0] && stockb->a[0] == stockb->big)
+			{
+			//	push(stockb, stocka, "pa resolve ??\n");
+				//break ;
+			//	printf("exitting at stocka breakpoint\n");
+			//	print_stacks_ps(main);
+			//	exit(1);
+			}
 			//resolve_last_a(stocka, main);
 			reverse_rotate(stocka, "rra try !!! \n");
+		print_stacks_ps(main);
 		}
 		resolve_last_a(stocka, main);
 		if (stocka->a[0] > stocka->a[1])
@@ -105,8 +121,9 @@ void	resolve_last_a(t_stock *stocka, t_main *main)
 	if (stocka->a[size] < stocka->a[0] && stocka->a[size] > main->stockb.a[0]
 					&& stocka->a[size] != stocka->big)
 		reverse_rotate(stocka, "rra for last_a\n");
-	//	printf("PRINTING FROM resolve_last_a >>> END\n");
-	//print_stacks_ps(main);
+
+		printf("PRINTING FROM resolve_last_a >>> END\n");
+	print_stacks_ps(main);
 }
 
 int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
@@ -140,7 +157,10 @@ int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
 				swap(stockb, "ss\n");
 			}
 			else if (stocka->a[0] > stocka->a[1])
+			{
+			// here resolve_last_a needed but with some more
 				swap(stocka, "sa\n");
+			}
 			//count++;
 			}
 		i++;
@@ -155,6 +175,12 @@ void	find_moves(t_stock *stocka, t_stock *stockb, t_main *main)
 	{
 		//printf("____________PRINTING ENTERING find_moves\n");
 		//print_stacks_ps(main);
+		if (stocka->a[0] == 101)
+		{
+			printf("I did exit\n");
+			print_stacks_ps(main);
+			exit(1);
+		}
 		exceptions_deal(stocka, stockb, main);
 		resolve_last_a(stocka, main);
 		first_operation(stocka, stockb, main);
