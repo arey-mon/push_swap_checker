@@ -14,12 +14,12 @@
 
 void	push_first_quarter(t_main *main)
 {
-printf("push_first_quarter\n");
+	//printf("push_first_quarter\n");
 	//long	b_median;
 
 	find_median(main, &main->stockb);
-	printf("your b_median is : %ld\n", main->stockb.median);
-	printf("value you're gonna push is : %d\n", main->stocka.a[0]);
+	//printf("your b_median is : %ld\n", main->stockb.median);
+	//printf("value you're gonna push is : %d\n", main->stocka.a[0]);
 
 // take care of size
 	// 1. if > median
@@ -40,7 +40,7 @@ printf("push_first_quarter\n");
 	
 	if (main->stockb.size == 4)
 		resolve_less_than_five_b(&main->stockb);
-	print_stacks_ps(main);
+	//print_stacks_ps(main);
 }
 
 void	push_second_quarter(t_main *main)
@@ -80,16 +80,14 @@ void		push_quarters(t_main *main, t_stock *stocka, int div)
 	//printf("__________________________________ push_quarters\n");
 	last_a = stocka->a[stocka->size - 1];
 	find_smallest(stocka);
-	//while (div != 4 && stocka->size > 3)
 	while (*stocka->a != last_a)
 	{
-	//print_stacks_ps(main);
 		if (div == 0 && *stocka->a <= stocka->quarter)
 			push_first_quarter(main);
 		// I exit here
 		//print_stacks_ps(main);
-	//	if (div == 2)
-	//		exit (1);
+		//	if (div == 2)
+		//		exit (1);
 		//
 		else if (div == 1 && *stocka->a > stocka->quarter && *stocka->a <= stocka->median)
 			 push_second_quarter(main);
@@ -103,5 +101,5 @@ void		push_quarters(t_main *main, t_stock *stocka, int div)
 	if (stocka->size <= 5)
 		resolve_less_than_five(stocka, &main->stockb);
 	//printf("______________________ PRINTING AFTER PUSH_QUARTERS\n");
-	print_stacks_ps(main);
+	//print_stacks_ps(main);
 }

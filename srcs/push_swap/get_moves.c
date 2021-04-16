@@ -144,7 +144,11 @@ void	resolve_last_a(t_stock *stocka, t_main *main)
 	size = stocka->size - 1;
 	if (stocka->a[size] < stocka->a[0] && stocka->a[size] > main->stockb.a[0]
 					&& stocka->a[size] != stocka->big)
-		reverse_rotate(stocka, "ra for last-a\n");
+		reverse_rotate(stocka, "rra for last_a\n");
+	/// added that line because it quitted before last move
+	if (stocka->a[size] < stocka->a[0] && stocka->a[size] > main->stockb.a[0]
+					&& stocka->a[size] != stocka->big)
+		reverse_rotate(stocka, "rra for last_a\n");
 	//	printf("PRINTING FROM resolve_last_a >>> END\n");
 	//print_stacks_ps(main);
 }
@@ -152,19 +156,39 @@ void	resolve_last_a(t_stock *stocka, t_main *main)
 int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
 {
 	int	i;
+	int	count;
+	int	tmp;
 
 	i = 0;
+	count = 0;
 	(void)main;
 	(void)stockb;
-	printf("_______________________________ check_order\n");
-	printf("you're stocka->big is : %d\n", stocka->big);
-	print_stacks_ps(main);
+	//printf("_______________________________ check_order\n");
+	//print_stacks_ps(main);
 	while (stocka->a[i] != stocka->big)
 	{
 		if (stocka->a[i] > stocka->a[i + 1])
 		{
-			printf("let me know, unordered value is : %d\n", stocka->a[i]);
-			exit (1);
+			//printf("let me know, unordered value is : %d\n", stocka->a[i]);
+			tmp = stocka->a[i];
+			while (stocka->a[0] != tmp)
+			{
+				rotate(stocka, "ra of check_order\n");
+				if (stocka->a[0] > stocka->a[1] && stockb->a[0] < stockb->a[1])
+				{
+					swap(stocka, "");
+					swap(stockb, "ss\n");
+				}
+				else if (stocka->a[0] > stocka->a[1])
+					swap(stocka, "sa\n");
+				count++;
+			}
+			// check if a[size - 1] > stockb->big.
+			// that's done in last_a resolution
+			// if yes, reverse_rotate while count > 0 (decrease)
+			// if not, wait until stockb->big is pushed ???
+			//print_stacks_ps(main);
+			//exit (1);
 		}
 		i++;
 	}

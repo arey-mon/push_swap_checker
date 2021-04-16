@@ -95,5 +95,5 @@ void	find_median(t_main *main, t_stock *stock)
 	stock->quarter = arr[quarter_len];
 	stock->median = arr[quarter_len * 2];
 	stock->three_quarters = arr[quarter_len * 3];
-printf("here's your quarter = %ld, median : %ld, three_quarters : %ld\n", stock->quarter, stock->median, stock->three_quarters);
+//printf("here's your quarter = %ld, median : %ld, three_quarters : %ld\n", stock->quarter, stock->median, stock->three_quarters);
 }
