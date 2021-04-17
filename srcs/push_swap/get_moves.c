@@ -31,20 +31,20 @@ void	insert_bigger_b(t_stock *stocka, t_stock *stockb, t_main *main)
 					}
 			}
 		resolve_last_a(stocka, main);
-		printf("print before push\n");
-		print_stacks_ps(main);
+		//printf("print before push\n");
+		//print_stacks_ps(main);
 		push(stockb, stocka, "pa ....\n");
-		printf("print after push, then going to resolve_last_a\n");
-		print_stacks_ps(main);
-		resolve_last_a(stocka, main);
+		//printf("print after push, then going to resolve_last_a\n");
+		//print_stacks_ps(main);
+		//resolve_last_a(stocka, main);
 		while (i-- > 1)
 		{
 			printf("stockb->big = %d\n", stockb->big);
-			//find_biggest(stockb);
-			//if (stocka->a[stocka->size - 1] < stockb->a[0] && stockb->a[0] == stockb->big)
+			find_biggest(stockb);
+			if (stocka->a[stocka->size - 1] < stockb->a[0] && stockb->a[0] == stockb->big)
 			{
-			//	push(stockb, stocka, "pa resolve ??\n");
-				//break ;
+				push(stockb, stocka, "pa resolve ??\n");
+				break ;
 			//	printf("exitting at stocka breakpoint\n");
 			//	print_stacks_ps(main);
 			//	exit(1);
@@ -114,6 +114,10 @@ void	resolve_last_a(t_stock *stocka, t_main *main)
 	int		size;
 
 	size = stocka->size - 1;
+	find_biggest(&main->stockb);
+	// that should be a good idea but not written right ??
+	//if (stocka->a[size] > main->stockb.big)
+	{
 	if (stocka->a[size] < stocka->a[0] && stocka->a[size] > main->stockb.a[0]
 					&& stocka->a[size] != stocka->big)
 		reverse_rotate(stocka, "rra for last_a\n");
@@ -121,7 +125,16 @@ void	resolve_last_a(t_stock *stocka, t_main *main)
 	if (stocka->a[size] < stocka->a[0] && stocka->a[size] > main->stockb.a[0]
 					&& stocka->a[size] != stocka->big)
 		reverse_rotate(stocka, "rra for last_a\n");
-
+	}
+	/* ADDED LATE (may have two last elements of a to swap for resolution)
+	if (stocka->a[size] < stocka->a[size - 1])
+	{
+		reverse_rotate(stocka, "rra added\n");
+		reverse_rotate(stocka, "rra added\n");
+		swap(stocka, "sa\n");
+		//lacks two_rotate
+	}
+	*/
 		printf("PRINTING FROM resolve_last_a >>> END\n");
 	print_stacks_ps(main);
 }
@@ -129,28 +142,33 @@ void	resolve_last_a(t_stock *stocka, t_main *main)
 int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
 {
 	int	i;
-	//int	count;
 	int	tmp;
 
 	i = 0;
-	//count = 0;
 	(void)main;
-	(void)stockb;
 	printf("_______________________________ check_order\n");
-	//printf("PRINTING ENTERING check_order\n");
-	//print_stacks_ps(main);
+	printf("PRINTING ENTERING check_order\n");
+	print_stacks_ps(main);
+	find_biggest(stocka);
 	while (stocka->a[i] != stocka->big)
 	{
+	//exit (1);
+		if (stocka->size <= 5)
+			resolve_less_than_five(stocka, stockb);
 		if (stack_order(stocka) == 0)
 			return (0) ;
-		else if (stocka->size <= 5)
-			resolve_less_than_five(stocka, stockb);
-		if (stocka->a[i] > stocka->a[i + 1])
+		else if (stocka->a[i] > stocka->a[i + 1]) //size needed here
 		{
 			printf("let me know, unordered value is : %d\n", stocka->a[i]);
 			tmp = stocka->a[i];
+		//	exit (1);
 			while (stocka->a[0] != tmp)
-				rotate(stocka, "ra of check_order\n");
+			{
+				printf("a[0] = %d, tmp is : %d\n", stocka->a[0], tmp);
+			printf("stocka->big = %d\n", stocka->big);
+			print_stacks_ps(main);
+				rotate(stocka, "ra of check_order\n"); /// BIG PROBLEM
+			}
 			if (stocka->a[0] > stocka->a[1] && stockb->a[0] < stockb->a[1])
 			{
 				swap(stocka, "");
@@ -159,12 +177,14 @@ int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
 			else if (stocka->a[0] > stocka->a[1])
 			{
 			// here resolve_last_a needed but with some more
+				//resolve_last_a(stocka, main);
 				swap(stocka, "sa\n");
 			}
-			//count++;
 			}
+	printf(">>>>>>>>>> out of second while\n");
 		i++;
 	}
+	printf(">>>>>>>>>> out of check_order\n");
 	return (0);
 }
 
@@ -174,16 +194,17 @@ void	find_moves(t_stock *stocka, t_stock *stockb, t_main *main)
 	while (main->stockb.size > 0)
 	{
 		//printf("____________PRINTING ENTERING find_moves\n");
-		//print_stacks_ps(main);
-		if (stocka->a[0] == 101)
+		//
+		if (stocka->a[0] == 143)
 		{
 			printf("I did exit\n");
 			print_stacks_ps(main);
 			exit(1);
 		}
+		//*/
 		exceptions_deal(stocka, stockb, main);
 		resolve_last_a(stocka, main);
-		first_operation(stocka, stockb, main);
+		first_operation(stocka, stockb, main); // is insert_bigger_b finally...
 		check_order(stocka, stockb, main);
 		while (stocka->a[stocka->size - 1] < stocka->a[0] && main->stockb.size == 0)
 			reverse_rotate(stocka, "rra hope it's the last\n");
