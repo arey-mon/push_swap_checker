@@ -12,30 +12,29 @@ void	insert_bigger_b(t_stock *stocka, t_stock *stockb, t_main *main)
 	if (find_biggest(stockb) == 1 && stockb->size > 1)
 		swap(stockb, "sb\n");
 	if (stockb->big < stocka->big || stocka->size <= 2)
-	{	
+	{
 		if (stocka->size < 2 && stockb->big > stocka->big)
 		{
 			push(stockb, stocka, "pa .!!.\n");
 			swap(stocka, "sa this\n");
 		}
 		int i = 0;
-			if (find_biggest(stockb) == 0) //&& stockb->size > 0)
-			{
-				if (stocka->big > stockb->big)
-					while (stockb->big > stocka->a[0])
-					{
-						//resolve_last_a(stocka, main);
-						rotate(stocka, "ra another one\n");
-						i++;
-					}
-			}
+		if (find_biggest(stockb) == 0)
+		{
+			if (stocka->big > stockb->big)
+				while (stockb->big > stocka->a[0])
+				{
+					//resolve_last_a(stocka, main);
+					rotate(stocka, "ra another one\n");
+					i++;
+				}
+		}
 		resolve_last_a(stocka, main);
-		//printf("print before push\n");
 		//print_stacks_ps(main);
+		// THAT ONE IS A PROBLEM
 		push(stockb, stocka, "pa ....\n");
 		printf("print after push, then going to resolve_last_a\n");
 		print_stacks_ps(main);
-		//resolve_last_a(stocka, main);
 		while (i-- > 1)
 		{
 			printf("stockb->big = %d\n", stockb->big);
@@ -45,8 +44,9 @@ void	insert_bigger_b(t_stock *stocka, t_stock *stockb, t_main *main)
 				push(stockb, stocka, "pa resolve ??\n");
 				break ;
 			}
+		// THAT ONE IS A PROBLEM
+		// might rotate lower values of B before pushing A->big
 			reverse_rotate(stocka, "rra try !!! \n");
-		print_stacks_ps(main);
 		}
 		resolve_last_a(stocka, main);
 		if (stocka->a[0] > stocka->a[1])
@@ -55,8 +55,9 @@ void	insert_bigger_b(t_stock *stocka, t_stock *stockb, t_main *main)
 			swap(stocka, "sa after pa ...\n");
 		}
 	}
-	else
-		push(stockb, stocka, "pa ...!\n");
+	// feels like less problems to remove this
+	//else
+	//	push(stockb, stocka, "pa ...!\n");
 	//print_stacks_ps(main);
 }
 
@@ -118,8 +119,8 @@ int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
 	i = 0;
 	(void)main;
 	printf("_______________________________ check_order\n");
-	printf("PRINTING ENTERING check_order\n");
-	print_stacks_ps(main);
+	//printf("PRINTING ENTERING check_order\n");
+	//print_stacks_ps(main);
 	find_biggest(stocka);
 	while (stocka->a[i] != stocka->big)
 	{
@@ -136,9 +137,9 @@ int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
 			//exit (1);
 			while (stocka->a[0] != tmp)
 			{
-				printf("a[0] = %d, tmp is : %d\n", stocka->a[0], tmp);
-			printf("stocka->big = %d\n", stocka->big);
-			print_stacks_ps(main);
+				//printf("a[0] = %d, tmp is : %d\n", stocka->a[0], tmp);
+				//printf("stocka->big = %d\n", stocka->big);
+				//print_stacks_ps(main);
 				rotate(stocka, "ra of check_order\n"); /// BIG PROBLEM
 			}
 			if (stocka->a[0] > stocka->a[1] && stockb->a[0] < stockb->a[1])
@@ -153,7 +154,7 @@ int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
 				swap(stocka, "sa\n");
 			}
 			}
-	printf(">>>>>>>>>> out of second while\n");
+	//printf(">>>>>>>>>> out of second while\n");
 		i++;
 	}
 	printf(">>>>>>>>>> out of check_order\n");
@@ -167,7 +168,7 @@ void	find_moves(t_stock *stocka, t_stock *stockb, t_main *main)
 	{
 		//printf("____________PRINTING ENTERING find_moves\n");
 		//
-		if (stocka->a[0] == 143)
+		if (stocka->a[stocka->size - 1] == 131)
 		{
 			printf("I did exit\n");
 			print_stacks_ps(main);
