@@ -46,27 +46,20 @@ static void	sort_array(int *array, int len)
 int		solve_quarters(t_stock *stocka, t_stock *stockb, t_main *main)
 {
 	(void)main;
+	(void)stockb;
 	int		div;
 	int		i;
-	int		size_b;
+	//int		size_b;
 
 	div = 0;
 	i = 0;
 	while (stocka->a[i])
 	{
 		push_quarters(main, stocka, div);
-		//exit (1);
-		size_b = stockb->size;
-		while (size_b > 0)
-		{
-			find_smallest(stockb);
-			find_biggest(stockb);
-			size_b--;
-		}
+		if (div == 3)
+			break ;
 		i++;
 		div++;
-		if (div == 4)
-			break ;
 	}
 	//printf("_______PRINT FROM solve_quarters\n");
 	//print_stacks_ps(main);

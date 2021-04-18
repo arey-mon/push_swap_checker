@@ -24,7 +24,6 @@ P_SRC =			push_swap.c \
 				push_quarters.c \
 				sort_less_than_five.c \
 				sort_less_than_five_b.c \
-				divide_stock.c \
 				biggest_smallest.c
 				#resolve_a.c
 

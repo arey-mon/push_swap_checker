@@ -2,99 +2,30 @@
 #include "../../libft/includes/libft.h"
 #include <stdio.h>
 
-/*
-int		create_stock(t_stock *stocka, t_stock *stock_bottom, t_stock *stock_middle)
+
+
+void	divide_stock(t_stock *stocka, t_stock *stockb, t_main *main)
 {
-	int		size;
-	int		k;
-	int		l;
-	int		i;
-	int		count;
-
-	k = 0;
-	l = 0;
-	i = 0;
-	size = stocka->size;
-
-	char *fill = ft_itoa(stocka->a[i]);
-	count = ft_strlen(fill);
-	// THAT WAY IS FORBIDDEN CAUSE IT AINT NO PUSH(B)
-	while (size)
+	(void)main;
+	find_biggest(stocka);
+	//printf("_________________________________DIVIDE_STOCK\n");
+	while (stocka->size > 3)
 	{
-		char *fill = ft_itoa(stocka->a[i]);
-		count = ft_strlen(fill);
-		if (stocka->a[i] < 0 && count > 2)
+		if (stocka->a[0] != stocka->big)
 		{
-			stock_bottom->a[k] = stocka->a[i];
-			erase(stocka, i);
-			i--;
-			k++;
+			push(stocka, stockb, "pb\n");
+			if (stockb->a[0] < stockb->a[stockb->size - 1] && stockb->size >= 2)
+				rotate(stockb, "rb\n");
+			else if (stockb->a[0] < stockb->a[1] && stockb->size >= 2)
+				swap(stockb, "sb\n");
+		//print_stacks_ps(main);
 		}
-		else if (stocka->a[i] >= 0 && count == 1)
-		{
-			stock_middle->a[l] = stocka->a[i];
-			erase(stocka, i);
-			i--;
-			l++;
-		}
-		size--;
-		i++;
+		else
+			rotate(stocka, "ra\n");
 	}
-	/////
-	printf("ending create_stock with st->a = %d\n", stocka->a[0]);
-	return (0);
-}
-*/
-
-void	init_empty_stocks(t_stock *stock_bottom, t_stock *stock_middle)
-{
-		if (stock_bottom->size == 0)
-		{
-			if (!(stock_bottom->a = (int *)malloc(sizeof(int) * 2)))
-				printf("malloc failed\n");
-			*stock_bottom->a = 0;
-		}
-		if (stock_middle->size == 0)
-		{
-			if (!(stock_middle->a = (int *)malloc(sizeof(int) * 2)))
-				printf("malloc failed\n");
-			 *stock_middle->a = 0; //tried other stuff without success
-		}
-}
-
-void	get_malloc_size(t_stock *stocka, t_main *main)
-{
-	int		size;
-	int		i;
-	int		count;
-
-	size = stocka->size;
-	i = 0;
-	count = 0;
-	main->malloc_size_bottom = count;
-	main->malloc_size_up = count;
-	while (size)
-	{
-	/*
-		char *fill = ft_itoa(stocka->a[i]);
-		count = ft_strlen(fill);
-		if (stocka->a[i] < 0 && count > 2)
-		{
-			main->stock_bottom.size++;
-			main->malloc_size_bottom += count;
-			if (!(main->stock_bottom.a = (int *)malloc(sizeof(int) * main->malloc_size_bottom)))
-				printf("malloc failed\n");
-		}
-		else if (stocka->a[i] >= 0 && count == 1) //
-		{
-			main->stock_middle.size++;
-			main->malloc_size_up += count;
-			if (!(main->stock_middle.a = (int *)malloc(sizeof(int) * main->malloc_size_up)))
-				printf("malloc failed\n");
-		}
-		*/
-		init_empty_stocks(&main->stock_bottom, &main->stock_middle);
-		size--;
-		i++;
-	}
+	printf("_________________________________ RESOLVE_THREE\n");
+	resolve_three(stocka);
+	//insert_b(stocka, stockb, main);
+	print_stacks_ps(main);
+	printf("_________________________________>>>>>DIVIDE_STOCK\n");
 }

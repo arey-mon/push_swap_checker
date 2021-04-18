@@ -3,7 +3,7 @@
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
 
-void	push_first_quarter(t_main *main)
+void	push_first_long(t_main *main)
 {
 	//printf("push_first_quarter\n");
 	//print_stacks_ps(main);
@@ -24,31 +24,25 @@ void	push_first_quarter(t_main *main)
 	//print_stacks_ps(main);
 }
 
-void	push_second_quarter(t_main *main)
+void	push_second_long(t_main *main)
 {
 //printf("push_second_quarter\n");
 	push(&main->stocka, &main->stockb, "pb\n");
-	//printf("you are pushing : %d\n", main->stocka.a[0]);
 	if (main->stockb.a[0] < main->stockb.a[1])
 		swap(&main->stockb, "sb\n");
 }
 
-void	push_third_quarter(t_main *main)
+void	push_third_long(t_main *main)
 {
 //printf("push_third_quarter\n");
 	push(&main->stocka, &main->stockb, "pb\n");
-	//printf("you are pushing : %d\n", main->stocka.a[0]);
 	if (main->stockb.a[0] < main->stockb.a[1])
 		swap(&main->stockb, "sb\n");
 }
 
-void	push_fourth_quarter(t_main *main)
+void	push_fourth_long(t_main *main)
 {
-//printf("push_fourth_quarter\n");
-	//if (*main->stockb.a > ((int)main->median / 4) * 7 && main->stockb.size > 0)
-	//	rotate(&main->stockb, "rb\n");
 	push(&main->stocka, &main->stockb, "pb\n");
-	//printf("you are pushing : %d\n", main->stocka.a[0]);
 	if (main->stockb.a[0] < main->stockb.a[1])
 		swap(&main->stockb, "sb\n");
 }
