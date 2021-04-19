@@ -104,7 +104,7 @@ int		solve_quarters(t_stock *stocka, t_main *main)
 	while (stocka->a[i])
 	{
 		push_quarters(main, stocka, div);
-		if (div == 3)
+		if (div == 4)
 			break ;
 		i++;
 		div++;
@@ -124,6 +124,7 @@ void	find_median(t_main *main, t_stock *stock)
 	i = 0;
 	j = 0;
 	quarter_len = stock->size / 4;
+
 	if (!(arr = (int*)malloc(sizeof(int) * (stock->size + 1))))
 		printf("malloc failed\n");
 	while (i < (int)stock->size)

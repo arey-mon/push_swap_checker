@@ -21,8 +21,6 @@ TESTINGS
 
 ISSUES
 ? program should not quit before all instructions are read,
-. if there is a '0' in args, it is not printed (but not an error)
-. Stock B is not initialized. cf a.out >> rr
 . program contains some exit(1), but it impeaches free
 . norme
 . integers_check_error is false if a number size is = 10 and above min or max, it returns error when shouldn't
