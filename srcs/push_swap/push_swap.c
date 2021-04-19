@@ -101,12 +101,13 @@ int		main(int ac, char **av)
 		exit (1);
 	}
 	printf("you are dealing with [%d] elements\n", ac - 1);
+	//print_stacks_ps(&main);
 	resolve(&main);
 	if (stack_order(&main.stocka) || stack_order(&main.stockb))
 		find_moves(&main.stocka, &main.stockb, &main);
+	//print_stacks_ps(&main);
 	(stack_order(&main.stocka) == 0 && main.stockb.size == 0) ?
 						write(1, "OK\n", 3) : write(1, "KO\n", 3);
-//	print_stacks_ps(&main);
 	free_program(&main);
 	printf("END OF PROGRAM\n");
 	return (0);

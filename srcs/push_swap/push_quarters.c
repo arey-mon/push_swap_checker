@@ -50,12 +50,12 @@ void		push_quarters(t_main *main, t_stock *stocka, int div)
 	//printf("__________________________________ push_quarters\n");
 	last_a = stocka->a[stocka->size - 1];
 	find_biggest(stocka);
-	while (*stocka->a != last_a)
+	while (*stocka->a != last_a) //|| stocka->size <= 9)
 	{
 		if (div == 0 && *stocka->a <= stocka->quarter)
 			push_first_quarter(main);
 		else if (div == 1 && *stocka->a >= stocka->quarter && *stocka->a <= stocka->median)
-			 push_second_quarter(main);
+			push_second_quarter(main);
 		else if (div == 2 && *stocka->a >= stocka->median && *stocka->a <= stocka->three_quarters)
 			push_third_quarter(main);
 		else if (div == 3 && *stocka->a >= stocka->three_quarters && *stocka->a != stocka->big)

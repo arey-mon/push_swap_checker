@@ -15,7 +15,7 @@ void	push_first_long(t_main *main)
 	else
 	{
 		push(&main->stocka, &main->stockb, "pb\n");
-		rotate(&main->stockb, "ra from first_quarter\n");
+		rotate(&main->stockb, "ra\n");
 	}
 	if (main->stockb.size == 4)
 		resolve_less_than_five_b(&main->stockb);
@@ -47,7 +47,6 @@ void		push_long(t_main *main, t_stock *stocka, int div)
 	(void)main;
 	int		last_a;
 
-	printf("__________________________________ push_quarters\n");
 	printf("div = %d\n", div);
 	//print_stacks_ps(main);
 	last_a = stocka->a[stocka->size - 1];
@@ -57,7 +56,7 @@ void		push_long(t_main *main, t_stock *stocka, int div)
 		if (div == 0 && *stocka->a <= stocka->first_long)
 			push_first_long(main);
 		else if (div == 1 && *stocka->a >= stocka->first_long && *stocka->a <= stocka->second_long)
-			 push_second_long(main);
+			push_second_long(main);
 		else if (div == 2 && *stocka->a >= stocka->second_long && *stocka->a <= stocka->third_long)
 			push_third_long(main);
 		else if (div == 3 && *stocka->a >= stocka->third_long && *stocka->a <= stocka->fourth_long)

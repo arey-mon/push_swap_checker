@@ -20,6 +20,7 @@ S_SRC =			push.c \
 P_SRC =			push_swap.c \
 				resolve.c \
 				get_moves.c \
+				operate.c \
 				ps_utils.c \
 				push_quarters.c \
 				push_long.c \
