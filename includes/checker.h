@@ -70,7 +70,7 @@ int		check_instructions(char *line, t_stock *stocka, t_stock *stockb);
 void	execute_instructions(char *line, t_stock *stocka, t_stock *stockb);
 int		ft_iswhitespace(char a);
 int		fill_stack(int ac, char **arg, t_stock *stock);
-int		ft_atoi_int(char *str);
+int		ft_atoi_int(char *str, int *num);
 int		ft_strlen_int(int *size);
 int		get_args_size(char **av, int ac);
 int		init_stock(t_stock *stocka, t_stock *stockb, char **arg, int ac);
@@ -89,7 +89,6 @@ void	erase(t_stock *stack, size_t index);
 void	rotate(t_stock *stock, char *str);
 void	reverse_rotate(t_stock *stock, char *str);
 void	swap(t_stock *stocka, char *str);
-//void	swapboth(int *a, int *b);
 /*
 ** HELPING
 */

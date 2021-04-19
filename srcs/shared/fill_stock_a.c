@@ -40,7 +40,7 @@ int		split_args(char *fill, t_stock *stock, int i)
 printf("error from !isdigit, '-' is not followed by a number : [%c]\n", *fill);
 			}
 			else
-			fill--;
+				fill--;
 		}
 		if (!ft_isdigit(*fill) && *fill != '-' && *fill)
 		{
@@ -50,6 +50,14 @@ printf("error from !isdigit, '-' is not followed by a number : [%c]\n", *fill);
 		}
 		else
 		{
+			if (ft_atoi_int(fill, &num))
+			{
+				printf("ERROR A\n");
+				return (1);
+			}
+			else
+				ft_atoi_int(fill, &num);
+		/*
 			if (ft_strlen(fill) >= 2)
 			{
 				if (integers_check(fill))
@@ -61,6 +69,7 @@ printf("error from !isdigit, '-' is not followed by a number : [%c]\n", *fill);
 			}
 			else
 				num = ft_atoi(fill);
+				*/
 			stock->a[i] = num;
 			stock->size++;
 			break ;
@@ -78,8 +87,6 @@ int		check_duplicates(t_stock *stock)
 
 	size = stock->size;
 	i = 0;
-	//j = 1;
-	// j never increments
 	while (i < (int)stock->size - 1)
 	{
 		j = i + 1;

@@ -12,39 +12,36 @@ int		ft_strlen_int(int *size)
 	return (i);
 }
 
-int		integers_check_int(char *str, int i)
+int		ft_atoi_int(char *str, int *num)
 {
-	i = str[0] == '-' ? 1 : 0;
-	while (str[i])
-	{
-		printf("str[0] is = %d\n", str[i]);
-		if (str[1] < 49)
-			return (0);
-		if (str[2] < 52)
-			return (0);
-		if (str[3] < 55)
-			return (0);
-		if (str[4] < 52)
-			return (0);
-		if (str[5] < 56)
-			return (0);
-		if (str[6] < 51)
-			return (0);
-		if (str[7] < 54)
-			return (0);
-		if (str[8] < 52)
-			return (0);
-		i++;
-	}
-	return (1);
+	int		i;
+	int		m;
+	long	nb;
+	char	*ptr;
+
+	m = 1;
+	nb = 0;
+	ptr = (char *)str;
+	if (*ptr == '-' && ptr++)
+		m *= -1;
+	if (*ptr == '\0')
+		return (1);
+	i = 0;
+	while (*ptr >= '0' && *ptr <= '9' && i++ < 10)
+		nb = nb * 10 + *ptr++ - '0';
+	if (*ptr != '\0' || nb * m > 2147483647 ||  nb * m < -2147483648)
+		return (1);
+	*num = nb * m;
+	return (0);
 }
 
+/*
 int		integers_check_pos(char *str)
 {
-	int	stop;
+	(void)str;
+
 	int	i;
 
-printf("entering str : %s\n", str);
 	stop = 0;
 	i = 0;
 	stop = (ft_strlen(str) > 10) ? 1 : 0;
@@ -66,11 +63,12 @@ printf("entering str : %s\n", str);
 		stop = (stop == 1 || str[9] > 55) ? 1 : 0;
 	}
 	stop = integers_check_int(str, i) == 0 ? 0 : 1;
-	return (stop == 0) ? 0 : 1;
+	return (0);
 }
 
 int		integers_check_neg(char *str)
 {
+	(void)str;
 	int	stop;
 	int	i;
 
@@ -92,6 +90,7 @@ int		integers_check_neg(char *str)
 	}
 	printf("integers_check_neg returns : %d\n", stop);
 	return (stop == 0) ? 0 : 1;
+	return (0);
 }
 
 int		integers_check(char *str)
@@ -117,28 +116,4 @@ int		integers_check(char *str)
 	}
 	return (0);
 }
-
-int		ft_atoi_int(char *str)
-{
-	int	i;
-	int	m;
-	int	nb;
-
-	i = 0;
-	m = 1;
-	nb = 0;
-	while (str[i] && ft_iswhitespace(str[i]))
-		i++;
-	if (str[i] != '\0' && (str[i] == '-' || str[i] == '+'))
-	{
-		if (str[i] == '-')
-			m *= -1;
-		i++;
-	}
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
-	{
-		nb = nb * 10 + (str[i] - 48);
-		i++;
-	}
-	return (nb * m);
-}
+*/
