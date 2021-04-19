@@ -54,7 +54,7 @@ void	find_median_ten(t_main *main, t_stock *stock)
 	j = 0;
 	tenth = stock->size / 10;
 	if (!(arr = (int*)malloc(sizeof(int) * (stock->size + 1))))
-		printf("malloc failed\n");
+		exit (1);
 	while (i < (int)stock->size)
 	{
 		arr[i++] = stock->a[j++];
@@ -69,7 +69,6 @@ void	find_median_ten(t_main *main, t_stock *stock)
 	stock->seven_long = arr[tenth * 7];
 	stock->eight_long = arr[tenth * 8];
 	stock->eight_long = arr[tenth * 9];
-printf("1st long = %ld - 2d long = %ld, median_long = %ld\n", stock->first_long, stock->second_long, stock->median_long);
 }
 
 int		solve_ten(t_stock *stocka, t_main *main)
@@ -126,7 +125,7 @@ void	find_median(t_main *main, t_stock *stock)
 	quarter_len = stock->size / 4;
 
 	if (!(arr = (int*)malloc(sizeof(int) * (stock->size + 1))))
-		printf("malloc failed\n");
+		exit (1);
 	while (i < (int)stock->size)
 	{
 		arr[i++] = stock->a[j++];
@@ -135,5 +134,4 @@ void	find_median(t_main *main, t_stock *stock)
 	stock->quarter = arr[quarter_len];
 	stock->median = arr[quarter_len * 2];
 	stock->three_quarters = arr[quarter_len * 3];
-//printf("here's your quarter = %ld, median : %ld, three_quarters : %ld\n", stock->quarter, stock->median, stock->three_quarters);
 }

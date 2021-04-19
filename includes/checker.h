@@ -41,23 +41,20 @@ typedef struct	s_main
 /*
 **  PROGRAM (PUSH_SWAP)
 */
-//int		adjust_pivot(size_t count, size_t size_b, t_stock *stocka);
-//int		choose_rotation(t_stock *stocka, int div, t_main *main);
-//int		create_stock(t_stock *stocka, t_main *main);
-//void	divide_stock(t_stock *stocka, t_stock *stockb, t_main *main);
-//int		insertion_diff(t_stock *stocka, t_stock *stockb, t_main *main);
 void	find_median(t_main *main, t_stock *stock);
 void	find_median_ten(t_main *main, t_stock *stock);
 void	find_moves(t_stock *stocka, t_stock *stockb, t_main *main);
-//int		get_pivot(t_stock *stocka, t_main *main);
-//int		push_check(t_stock *stocka, int div, t_main *main);
 void	push_long(t_main *main, t_stock *stocka, int div);
 void	push_quarters(t_main *main, t_stock *stocka, int div);
+void	push_median_long(t_main *main);
+void	push_six_long(t_main *main);
+void	push_seven_long(t_main *main);
+void	push_eight_long(t_main *main);
+void	push_nine_long(t_main *main);
 void	push_first_quarter(t_main *main);
 void	push_second_quarter(t_main *main);
 void	push_third_quarter(t_main *main);
 void	push_fourth_quarter(t_main *main);
-void	reset_moves(t_stock *stock);
 void	resolve_last_a(t_stock *stocka, t_main *main);
 void	resolve_small(t_stock *stocka, t_stock *stockb, t_main *main);
 int		resolve_three(t_stock *stocka);
@@ -68,11 +65,9 @@ int		resolve_less_than_five_b(t_stock *stockb);
 int		solve_quarters(t_stock *stocka, t_main *main);
 int		solve_ten(t_stock *stocka, t_main *main);
 int		sort(t_stock *stocka, t_stock *stockb, t_main *main);
-int		sort(t_stock *stocka, t_stock *stockb, t_main *main);
 int		find_biggest(t_stock *stock);
 int		find_smallest(t_stock *stock);
 void	get_malloc_size(t_stock *stocka, t_main *main);
-void	get_nb_of_stocks(t_stock *stocka, t_main *main);
 int		stack_order_b(t_stock *stock);
 /*
 **  PROGRAM (CHECKER && SHARED)

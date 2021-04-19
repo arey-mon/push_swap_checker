@@ -87,10 +87,10 @@ int	read_instructions(t_stock *stocka, t_stock *stockb)
 				err = 1;
 		}
 	}
-	printf("value of err = %d\n", err);
 	if (err == 1)
 	{
 		write(1, "Error\n", 6);
+		// check free
 		exit (1);
 	}
 	return (0);

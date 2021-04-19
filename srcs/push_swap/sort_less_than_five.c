@@ -17,7 +17,7 @@ int		resolve_five(t_stock *stocka, t_stock *stockb)
 				reverse_rotate(stocka, "ra\n");
 				i++;
 			}
-		else 
+		else
 			while (stocka->a[0] != stocka->small)
 			{
 				rotate(stocka, "ra\n");
@@ -72,22 +72,14 @@ int		resolve_less_than_five(t_stock *stocka, t_stock *stockb)
 	i = 0;
 	if (stocka->size == 1)
 		return (0);
-	else if (stocka->size == 2)
-	{
+	else if (stocka->size == 2 && stocka->a[0] > stocka->a[1])
 		swap(stocka, "sa\n");
-	}
 	else if (stocka->size == 3)
-	{
 		resolve_three(stocka);
-	}
 	else if (stocka->size == 4)
-	{
 		resolve_four(stocka, stockb);
-	}
 	else if (stocka->size == 5)
-	{
 		while (stack_order(stocka))
 			resolve_five(stocka, stockb);
-	}
 	return (0);
 }

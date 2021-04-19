@@ -35,15 +35,12 @@ int		split_args(char *fill, t_stock *stock, int i)
 		{
 			fill++;
 			if (!ft_isdigit(*fill))
-				write(1, "Error\n", 6);
+				return (1);
 			else
 				fill--;
 		}
 		if (!ft_isdigit(*fill) && *fill != '-' && *fill)
-		{
-			write(1, "Error\n", 6);
 			return (1);
-		}
 		else
 		{
 			if (ft_atoi_int(fill, &num))
@@ -107,9 +104,9 @@ int		init_stock(t_stock *stocka, t_stock *stockb, char **arg, int ac)
 
 	malloc_size = get_args_size(arg, ac);
 	if (!(stocka->a = (int *)malloc(sizeof(int) * malloc_size)))
-		exit(1);
+		return (1);
 	if (!(stockb->a = (int *)malloc(sizeof(int) * malloc_size)))
-		exit(1);
+		return (1);
 	stocka->size = 0;
 	stockb->size = 0;
 	if (fill_stack(ac, arg, stocka))
@@ -118,7 +115,6 @@ int		init_stock(t_stock *stocka, t_stock *stockb, char **arg, int ac)
 	// ./checker 2 -1 1 -42 -24 -a 1 >> Ctl+D
 		//free(stocka->a);
 		//free(stockb->a);
-		write(1, "Error\n", 6);
 		return (1);
 	}
 	return (0);

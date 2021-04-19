@@ -5,8 +5,6 @@
 
 void	push_first_long(t_main *main)
 {
-	//printf("push_first_long\n");
-	//print_stacks_ps(main);
 	find_median(main, &main->stockb);
 	if (main->stocka.a[0] >= main->stockb.median || main->stockb.size == 1)
 	{
@@ -21,12 +19,10 @@ void	push_first_long(t_main *main)
 	}
 	if (main->stockb.size == 4)
 		resolve_less_than_five_b(&main->stockb);
-	//print_stacks_ps(main);
 }
 
 void	push_second_long(t_main *main)
 {
-//printf("push_second_quarter\n");
 	push(&main->stocka, &main->stockb, "pb\n");
 	if (main->stockb.a[0] < main->stockb.a[1])
 		swap(&main->stockb, "sb\n");
@@ -34,45 +30,12 @@ void	push_second_long(t_main *main)
 
 void	push_third_long(t_main *main)
 {
-//printf("push_third_quarter\n");
 	push(&main->stocka, &main->stockb, "pb\n");
 	if (main->stockb.a[0] < main->stockb.a[1])
 		swap(&main->stockb, "sb\n");
 }
 
 void	push_fourth_long(t_main *main)
-{
-	push(&main->stocka, &main->stockb, "pb\n");
-	if (main->stockb.a[0] < main->stockb.a[1])
-		swap(&main->stockb, "sb\n");
-}
-
-void	push_median_long(t_main *main)
-{
-	push(&main->stocka, &main->stockb, "pb\n");
-	if (main->stockb.a[0] < main->stockb.a[1])
-		swap(&main->stockb, "sb\n");
-}
-
-void	push_six_long(t_main *main)
-{
-	push(&main->stocka, &main->stockb, "pb\n");
-	if (main->stockb.a[0] < main->stockb.a[1])
-		swap(&main->stockb, "sb\n");
-}
-void	push_seven_long(t_main *main)
-{
-	push(&main->stocka, &main->stockb, "pb\n");
-	if (main->stockb.a[0] < main->stockb.a[1])
-		swap(&main->stockb, "sb\n");
-}
-void	push_eight_long(t_main *main)
-{
-	push(&main->stocka, &main->stockb, "pb\n");
-	if (main->stockb.a[0] < main->stockb.a[1])
-		swap(&main->stockb, "sb\n");
-}
-void	push_nine_long(t_main *main)
 {
 	push(&main->stocka, &main->stockb, "pb\n");
 	if (main->stockb.a[0] < main->stockb.a[1])
@@ -111,9 +74,6 @@ void		push_long(t_main *main, t_stock *stocka, int div)
 			push_nine_long(main);
 		else
 			rotate(stocka, "ra\n");
-		//
-		//if (div == 9)
-		//	exit (1);
 	}
 	if (stocka->size <= 5)
 		resolve_less_than_five(stocka, &main->stockb);

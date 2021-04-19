@@ -67,13 +67,14 @@ void	free_program(t_main *main)
 
 int	resolve(t_main *main)
 {
-	if (main->stocka.size <= 5 && stack_order(&main->stocka) != 0)
+	if (stack_order(&main->stocka) == 0)
+		return (0);
+	else if (main->stocka.size <= 5)
 		resolve_less_than_five(&main->stocka, &main->stockb);
 	else if (main->stocka.size < 10)
 		resolve_small(&main->stocka, &main->stockb, main);
 	else if (main->stocka.size <= 101)
 	{
-	// if you resolve first ten or fifteen, maybe you can lower number of operations
 		find_median(main, &main->stocka);
 		solve_quarters(&main->stocka, main);
 	}
@@ -94,9 +95,12 @@ int		main(int ac, char **av)
 	main.stocka.write = 1;
 	main.stockb.write = 1;
 	(ac > 1) ? init_stock(&main.stocka, &main.stockb, &av[1], ac) : exit(1);
-	printf("you are dealing with [%d] elements\n", ac);
-//	if (stack_order(&main.stocka) || stack_order(&main.stockb))
-//		resolve(&main);
+	if (init_stock(&main.stocka, &main.stockb, &av[1], ac))
+	{
+		write(1, "Error\n", 6);
+		exit (1);
+	}
+	printf("you are dealing with [%d] elements\n", ac - 1);
 	resolve(&main);
 	if (stack_order(&main.stocka) || stack_order(&main.stockb))
 		find_moves(&main.stocka, &main.stockb, &main);

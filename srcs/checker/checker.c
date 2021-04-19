@@ -46,6 +46,11 @@ int		main(int ac, char **av)
 	t_main			main;
 
 	(ac > 1) ? init_stock(&main.stocka, &main.stockb, &av[1], ac) : exit(1);
+	if (init_stock(&main.stocka, &main.stockb, &av[1], ac))
+	{
+		write(1, "Error\n", 6);
+		exit (1);
+	}
 	read_instructions(&main.stocka, &main.stockb);
 	free_program(&main);
 	printf("END OF PROGRAM\n");
