@@ -16,9 +16,18 @@ typedef struct	s_stock
 	int		write;
 	int		pivot;
 	int		moves;
-	long			quarter;
-	long			median;
-	long			three_quarters;
+	long	quarter;
+	long	median;
+	long	three_quarters;
+	long	first_long;
+	long	second_long;
+	long	third_long;
+	long	fourth_long;
+	long	median_long;
+	long	six_long;
+	long	seven_long;
+	long	eight_long;
+	long	nine_long;
 }				t_stock;
 
 typedef struct	s_main
@@ -32,15 +41,17 @@ typedef struct	s_main
 /*
 **  PROGRAM (PUSH_SWAP)
 */
-int		adjust_pivot(size_t count, size_t size_b, t_stock *stocka);
-int		choose_rotation(t_stock *stocka, int div, t_main *main);
-int		create_stock(t_stock *stocka, t_main *main);
-void	divide_stock(t_stock *stocka, t_stock *stockb, t_main *main);
-int		insertion_diff(t_stock *stocka, t_stock *stockb, t_main *main);
+//int		adjust_pivot(size_t count, size_t size_b, t_stock *stocka);
+//int		choose_rotation(t_stock *stocka, int div, t_main *main);
+//int		create_stock(t_stock *stocka, t_main *main);
+//void	divide_stock(t_stock *stocka, t_stock *stockb, t_main *main);
+//int		insertion_diff(t_stock *stocka, t_stock *stockb, t_main *main);
 void	find_median(t_main *main, t_stock *stock);
+void	find_median_ten(t_main *main, t_stock *stock);
 void	find_moves(t_stock *stocka, t_stock *stockb, t_main *main);
 //int		get_pivot(t_stock *stocka, t_main *main);
-int		push_check(t_stock *stocka, int div, t_main *main);
+//int		push_check(t_stock *stocka, int div, t_main *main);
+void	push_long(t_main *main, t_stock *stocka, int div);
 void	push_quarters(t_main *main, t_stock *stocka, int div);
 void	push_first_quarter(t_main *main);
 void	push_second_quarter(t_main *main);
@@ -54,7 +65,8 @@ int		resolve_four_b(t_stock *stocka);
 int		resolve_five(t_stock *stocka, t_stock *stockb);
 int		resolve_less_than_five(t_stock *stocka, t_stock *stockb);
 int		resolve_less_than_five_b(t_stock *stockb);
-int		solve_quarters(t_stock *stocka, t_stock *stockb, t_main *main);
+int		solve_quarters(t_stock *stocka, t_main *main);
+int		solve_ten(t_stock *stocka, t_main *main);
 int		sort(t_stock *stocka, t_stock *stockb, t_main *main);
 int		sort(t_stock *stocka, t_stock *stockb, t_main *main);
 int		find_biggest(t_stock *stock);
@@ -66,7 +78,7 @@ int		stack_order_b(t_stock *stock);
 **  PROGRAM (CHECKER && SHARED)
 */
 int		check_duplicates(t_stock *stock);
-int		check_instructions(char *line, t_stock *stocka, t_stock *stockb);
+int		check_instructions(char *line, t_stock *stocka, t_stock *stockb, int err);
 void	execute_instructions(char *line, t_stock *stocka, t_stock *stockb);
 int		ft_iswhitespace(char a);
 int		fill_stack(int ac, char **arg, t_stock *stock);

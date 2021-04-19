@@ -3,8 +3,6 @@
 #include "../../includes/checker.h"
 #include <string.h>
 #include <unistd.h>
-// it will segfault with this printing 
-// but... so useful
 
 void	print_stacks(t_stock *stocka, t_stock *stockb)
 {

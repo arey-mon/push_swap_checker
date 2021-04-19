@@ -6,7 +6,6 @@
 
 void	execute_instructions(char *line, t_stock *stocka, t_stock *stockb)
 {
-	printf("       >>>>> EXECUTE_INSTRUCTIONS\n");
 	if (ft_strncmp("sa\n", line, 3) == 0 || !ft_strncmp("ss\n", line, 3))
 		swap(stocka, "sa\n");
 	if (ft_strncmp("sb\n", line, 3) == 0 || !ft_strncmp("ss\n", line, 3))
@@ -23,11 +22,9 @@ void	execute_instructions(char *line, t_stock *stocka, t_stock *stockb)
 		reverse_rotate(stocka, "");
 	if (ft_strncmp("rrb\n", line, 3) == 0 || !ft_strncmp("rrr\n", line, 3))
 		reverse_rotate(stockb, "");
-	///// RESULT SHOW
-	print_stacks(stocka, stockb);
 }
 
-int		check_instructions(char *line, t_stock *stocka, t_stock *stockb)
+int		check_instructions(char *line, t_stock *stocka, t_stock *stockb, int err)
 {
 	const char	*instr[] = {"sa\n", "sb\n", "ss\n", "pa\n", "pb\n", "ra\n",
 		"rb\n", "rr\n", "rra\n", "rrb\n", "rrr\n", 0};
@@ -46,14 +43,10 @@ int		check_instructions(char *line, t_stock *stocka, t_stock *stockb)
 			ok = 0;
 		i++;
 	}
-	if (ok == 1)
-	{
-		write(1, "Error\n", 6);
-		printf("not in instruction_set, line is [%s]\n", line);
-		exit (1); /// to be changed
-	}
-	else
+	if (ok == 0)
 		execute_instructions(line, stocka, stockb);
+	else
+		err = 1;
 	return (ok);
 }
 
@@ -64,7 +57,6 @@ int	read_instructions2(t_stock *stocka, int ret)
 	else
 	{
 		write(1, "Error\n", 6);
-		printf("ret error\n");
 		return (1);
 	}
 	return (0);
@@ -74,13 +66,16 @@ int	read_instructions(t_stock *stocka, t_stock *stockb)
 {
 	int		ret;
 	char	line[4];
+	int		err;
 
+	err = 0;
 	ft_bzero(line, 3);
 	if ((ret = read(STDIN_FILENO, line, 4)) <= 0)
 		read_instructions2(stocka, ret);
 	else
 	{
-		check_instructions(&line[0], stocka, stockb);
+		if (check_instructions(&line[0], stocka, stockb, err))
+			err = 1;
 		while ((ret = read(STDIN_FILENO, line, 5)) >= 0)
 		{
 			if (ret == 0)
@@ -88,8 +83,15 @@ int	read_instructions(t_stock *stocka, t_stock *stockb)
 				stack_order(stocka);
 				break ;
 			}
-			check_instructions(line, stocka, stockb);
+			if (check_instructions(line, stocka, stockb, err))
+				err = 1;
 		}
+	}
+	printf("value of err = %d\n", err);
+	if (err == 1)
+	{
+		write(1, "Error\n", 6);
+		exit (1);
 	}
 	return (0);
 }

@@ -28,7 +28,6 @@ void	push_second_quarter(t_main *main)
 {
 //printf("push_second_quarter\n");
 	push(&main->stocka, &main->stockb, "pb\n");
-	//printf("you are pushing : %d\n", main->stocka.a[0]);
 	if (main->stockb.a[0] < main->stockb.a[1])
 		swap(&main->stockb, "sb\n");
 }
@@ -37,7 +36,6 @@ void	push_third_quarter(t_main *main)
 {
 //printf("push_third_quarter\n");
 	push(&main->stocka, &main->stockb, "pb\n");
-	//printf("you are pushing : %d\n", main->stocka.a[0]);
 	if (main->stockb.a[0] < main->stockb.a[1])
 		swap(&main->stockb, "sb\n");
 }
@@ -45,10 +43,7 @@ void	push_third_quarter(t_main *main)
 void	push_fourth_quarter(t_main *main)
 {
 //printf("push_fourth_quarter\n");
-	//if (*main->stockb.a > ((int)main->median / 4) * 7 && main->stockb.size > 0)
-	//	rotate(&main->stockb, "rb\n");
 	push(&main->stocka, &main->stockb, "pb\n");
-	//printf("you are pushing : %d\n", main->stocka.a[0]);
 	if (main->stockb.a[0] < main->stockb.a[1])
 		swap(&main->stockb, "sb\n");
 }
@@ -64,7 +59,6 @@ void		push_quarters(t_main *main, t_stock *stocka, int div)
 	find_biggest(stocka);
 	while (*stocka->a != last_a)
 	{
-	//printf("stocka->a : %d, div : %d\n", *stocka->a, div);
 		if (div == 0 && *stocka->a <= stocka->quarter)
 			push_first_quarter(main);
 		// I exit here

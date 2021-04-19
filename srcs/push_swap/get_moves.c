@@ -37,12 +37,7 @@ void	insert_bigger_b(t_stock *stocka, t_stock *stockb, t_main *main)
 			}
 		}
 		resolve_last_a(stocka, main);
-		//print_stacks_ps(main);
-		// THAT ONE COSTS ME LOT OF MOVES FOR ONE INSERTION
 		push(stockb, stocka, "pa ....\n");
-		//printf("print after push, then going to resolve_last_a\n");
-		//print_stacks_ps(main);
-		// ADDED after && so you don't reverse when last_a > b->big
 		while (i-- > 1 && stocka->a[stocka->size - 1] > stockb->big)
 		{
 			find_biggest(stockb);
@@ -114,7 +109,6 @@ int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
 	i = 0;
 	(void)main;
 	//printf("_______________________________ check_order\n");
-	//print_stacks_ps(main);
 	find_biggest(stocka);
 	while (stocka->a[i] != stocka->big)
 	{
@@ -124,26 +118,24 @@ int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
 			break ;
 		else if (stocka->a[i] > stocka->a[i + 1]) //size needed here
 		{
-			//printf("let me know, unordered value is : %d\n", stocka->a[i]);
 			tmp = stocka->a[i];
 			while (stocka->a[0] != tmp)
+			{
+			// if you're stuck on rotate, check if big->a from start is still in A
+			//printf("let me know, unordered value is : %d\n", stocka->a[i]);
+			//print_stacks_ps(main);
 				rotate(stocka, "ra of check_order\n"); /// BIG PROBLEM
+			}
 			if (stocka->a[0] > stocka->a[1] && stockb->a[0] < stockb->a[1])
 			{
 				swap(stocka, "");
 				swap(stockb, "ss\n");
 			}
 			else if (stocka->a[0] > stocka->a[1])
-			{
-			// here resolve_last_a needed but with some more
-				//resolve_last_a(stocka, main);
 				swap(stocka, "sa\n");
-			}
 		}
-	//printf(">>>>>>>>>> out of second while\n");
 		i++;
 	}
-	//printf(">>>>>>>>>> out of check_order\n");
 	return (0);
 }
 
@@ -172,7 +164,7 @@ void	find_moves(t_stock *stocka, t_stock *stockb, t_main *main)
 			reverse_rotate(stocka, "rra hope it's the last\n");
 		if (stack_order(stocka) == 0 && stockb->size == 0)
 		{
-			printf("order is gonna break\n");
+			//printf("order is gonna break\n");
 			break ;
 		}
 	}

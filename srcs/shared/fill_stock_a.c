@@ -35,41 +35,21 @@ int		split_args(char *fill, t_stock *stock, int i)
 		{
 			fill++;
 			if (!ft_isdigit(*fill))
-			{
 				write(1, "Error\n", 6);
-printf("error from !isdigit, '-' is not followed by a number : [%c]\n", *fill);
-			}
 			else
 				fill--;
 		}
 		if (!ft_isdigit(*fill) && *fill != '-' && *fill)
 		{
 			write(1, "Error\n", 6);
-			printf("error from !isdigit, *fill is : [%c]\n", *fill);
 			return (1);
 		}
 		else
 		{
 			if (ft_atoi_int(fill, &num))
-			{
-				printf("ERROR A\n");
 				return (1);
-			}
 			else
 				ft_atoi_int(fill, &num);
-		/*
-			if (ft_strlen(fill) >= 2)
-			{
-				if (integers_check(fill))
-				{
-					printf("integers_check error\n");
-					return (1);
-				}
-				num = ft_atoi_int(fill);
-			}
-			else
-				num = ft_atoi(fill);
-				*/
 			stock->a[i] = num;
 			stock->size++;
 			break ;
@@ -126,7 +106,6 @@ int		init_stock(t_stock *stocka, t_stock *stockb, char **arg, int ac)
 	int		malloc_size;
 
 	malloc_size = get_args_size(arg, ac);
-	printf("malloc_size : %d\n", malloc_size);
 	if (!(stocka->a = (int *)malloc(sizeof(int) * malloc_size)))
 		exit(1);
 	if (!(stockb->a = (int *)malloc(sizeof(int) * malloc_size)))
@@ -140,8 +119,7 @@ int		init_stock(t_stock *stocka, t_stock *stockb, char **arg, int ac)
 		//free(stocka->a);
 		//free(stockb->a);
 		write(1, "Error\n", 6);
-		printf("Error from init_stock (fill_stack)\n");
-		return (1); //should not before all instructions are wrote
+		return (1);
 	}
 	return (0);
 }

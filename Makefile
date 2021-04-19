@@ -18,10 +18,11 @@ S_SRC =			push.c \
 				functions_set.c
 
 P_SRC =			push_swap.c \
-				sort.c \
+				resolve.c \
 				get_moves.c \
 				ps_utils.c \
 				push_quarters.c \
+				push_long.c \
 				sort_less_than_five.c \
 				sort_less_than_five_b.c \
 				biggest_smallest.c

@@ -71,10 +71,16 @@ int	resolve(t_main *main)
 		resolve_less_than_five(&main->stocka, &main->stockb);
 	else if (main->stocka.size < 10)
 		resolve_small(&main->stocka, &main->stockb, main);
+	else if (main->stocka.size <= 101)
+	{
+	// if you resolve first ten or fifteen, maybe you can lower number of operations
+		find_median(main, &main->stocka);
+		solve_quarters(&main->stocka, main);
+	}
 	else
 	{
-		find_median(main, &main->stocka);
-		solve_quarters(&main->stocka, &main->stockb, main);
+		find_median_ten(main, &main->stocka);
+		solve_ten(&main->stocka, main);
 	}
 	if (stack_order(&main->stocka) != 0 || (stack_order_b(&main->stockb) != 0))
 		return (1);
@@ -96,7 +102,7 @@ int		main(int ac, char **av)
 		find_moves(&main.stocka, &main.stockb, &main);
 	(stack_order(&main.stocka) == 0 && main.stockb.size == 0) ?
 						write(1, "OK\n", 3) : write(1, "KO\n", 3);
-	print_stacks_ps(&main);
+//	print_stacks_ps(&main);
 	free_program(&main);
 	printf("END OF PROGRAM\n");
 	return (0);
