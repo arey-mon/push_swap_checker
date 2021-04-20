@@ -6,6 +6,8 @@
 void	push_first_quarter(t_main *main)
 {
 	find_median(main, &main->stockb);
+	find_biggest(&main->stockb); //idea is to push smallest and biggest to the end
+	//
 	if (main->stocka.a[0] >= main->stockb.median || main->stockb.size == 1)
 	{
 		push(&main->stocka, &main->stockb, "pb\n");
@@ -19,6 +21,7 @@ void	push_first_quarter(t_main *main)
 	}
 	if (main->stockb.size == 4)
 		resolve_less_than_five_b(&main->stockb);
+	print_stacks_ps(main);
 }
 
 void	push_second_quarter(t_main *main)

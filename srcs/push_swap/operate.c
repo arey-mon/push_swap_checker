@@ -51,12 +51,16 @@ void	resolve_last_a(t_stock *stocka, t_main *main)
 
 	size = stocka->size - 1;
 	find_biggest(&main->stockb);
+	if (find_biggest(&main->stockb) > (int)main->stockb.size / 2 - 1)
+		while (find_biggest(&main->stockb) != 0)
+			reverse_rotate(&main->stockb, "rrb\n");
 	while (stocka->a[size] < stocka->a[0] && stocka->a[size] > main->stockb.a[0]
 			&& stocka->a[size] != stocka->big)
 		reverse_rotate(stocka, "rra for last_a\n");
 	while (stocka->a[size] < stocka->a[0] && stocka->a[size] > main->stockb.a[0]
 			&& stocka->a[size] != stocka->big)
 		reverse_rotate(stocka, "rra for last_a\n");
+	//print_stacks_ps(main);
 }
 
 int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
