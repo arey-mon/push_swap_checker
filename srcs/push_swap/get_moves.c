@@ -26,6 +26,7 @@ void	find_moves(t_stock *stocka, t_stock *stockb, t_main *main)
 		resolve_small(stocka, stockb, main);
 	while (main->stockb.size > 0)
 	{
+		//print_stacks_ps(main);
 		exception_deal(stockb);
 		do_first_operation(stocka, stockb, main);
 		if (stack_order(stocka) != 0)

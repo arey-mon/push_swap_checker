@@ -39,7 +39,10 @@ void	insert_bigger_b(t_stock *stocka, t_stock *stockb, t_main *main)
 	find_biggest(stocka);
 	find_biggest(stockb);
 	if (find_biggest(stockb) == 1 && stockb->size > 1)
+	{
 		swap(stockb, "sb\n");
+		//print_stacks_ps(main);
+	}
 	if (stockb->big < stocka->big || stocka->size <= 2)
 		insert_bigger_b2(stocka, stockb, main, i);
 	//print_stacks_ps(main);
@@ -51,15 +54,33 @@ void	resolve_last_a(t_stock *stocka, t_main *main)
 
 	size = stocka->size - 1;
 	find_biggest(&main->stockb);
-	if (find_biggest(&main->stockb) > (int)main->stockb.size / 2 - 1)
+	// a rrr can be added in this function
+	// happens when stockb->big is > 1/2 of (B)
+	// and a[last] > b->big
+	//
+	if (find_biggest(&main->stockb) > (int)main->stockb.size / 2 - 1 && main->stockb.size > 2)
+	{
 		while (find_biggest(&main->stockb) != 0)
 			reverse_rotate(&main->stockb, "rrb\n");
+		//print_stacks_ps(main);
+	}
+	//*/
 	while (stocka->a[size] < stocka->a[0] && stocka->a[size] > main->stockb.a[0]
 			&& stocka->a[size] != stocka->big)
-		reverse_rotate(stocka, "rra for last_a\n");
-	while (stocka->a[size] < stocka->a[0] && stocka->a[size] > main->stockb.a[0]
-			&& stocka->a[size] != stocka->big)
-		reverse_rotate(stocka, "rra for last_a\n");
+	{
+		/*
+		if (find_biggest(&main->stockb) > (int)main->stockb.size / 2 - 1
+		&& main->stockb.size > 2 && stocka->a[size] > main->stockb.big)
+		{
+			reverse_rotate(&main->stockb, "");
+			reverse_rotate(stocka, "rrr\n");
+			print_stacks_ps(main);
+		}
+		else
+		*/
+			reverse_rotate(stocka, "rra for last_a\n");
+		//print_stacks_ps(main);
+	}
 	//print_stacks_ps(main);
 }
 

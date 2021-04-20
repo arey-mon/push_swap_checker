@@ -47,7 +47,6 @@ void		push_long(t_main *main, t_stock *stocka, int div)
 	(void)main;
 	int		last_a;
 
-	printf("div = %d\n", div);
 	//print_stacks_ps(main);
 	last_a = stocka->a[stocka->size - 1];
 	find_biggest(stocka);
