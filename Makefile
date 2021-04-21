@@ -15,13 +15,13 @@ LIBFT =			libft/
 S_SRC =			push.c \
 				utils.c \
 				fill_stock_a.c \
+				leaks_checker.c \
 				functions_set.c
 
 P_SRC =			push_swap.c \
 				resolve.c \
 				get_moves.c \
 				operate.c \
-				ps_utils.c \
 				push_quarters.c \
 				push_long.c \
 				push_long2.c \

@@ -38,6 +38,7 @@ typedef struct	s_main
 	int				big_flag;
 }				t_main;
 
+void	check_leaks();
 /*
 **  PROGRAM (PUSH_SWAP)
 */

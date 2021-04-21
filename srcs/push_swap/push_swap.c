@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:17:15 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/21 20:02:02 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/21 20:36:01 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,6 @@ int		main(int ac, char **av)
 	(stack_order(&main.stocka) == 0 && main.stockb.size == 0) ?
 		write(1, "OK\n", 3) : write(1, "KO\n", 3);
 	free_program(&main);
+	check_leaks();
 	return (0);
 }

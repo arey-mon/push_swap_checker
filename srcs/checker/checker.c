@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:17:36 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/21 19:17:39 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/21 20:35:39 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ int		main(int ac, char **av)
 	}
 	read_instructions(&main.stocka, &main.stockb);
 	free_program(&main);
-	printf("END OF PROGRAM\n");
+	check_leaks();
 	return (0);
 }
