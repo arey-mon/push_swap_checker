@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
@@ -8,48 +7,46 @@ void	push_first_quarter(t_main *main)
 	find_median(&main->stockb);
 	if (main->stocka.a[0] >= main->stockb.median || main->stockb.size == 1)
 	{
-		push(&main->stocka, &main->stockb, "pb 1\n");
+		push(&main->stocka, &main->stockb, "pb\n");
 		if (main->stockb.a[0] < main->stockb.a[1] && main->stockb.size > 4)
 			swap(&main->stockb, "sb\n");
 	}
 	else
 	{
-		push(&main->stocka, &main->stockb, "pb 2\n");
+		push(&main->stocka, &main->stockb, "pb\n");
 		rotate(&main->stockb, "ra\n");
 	}
 	if (main->stockb.size == 4)
 		resolve_less_than_five_b(&main->stockb);
-	//print_stacks_ps(main);
 }
 
 void	push_second_quarter(t_main *main)
 {
-	push(&main->stocka, &main->stockb, "pb 3\n");
+	push(&main->stocka, &main->stockb, "pb\n");
 	if (main->stockb.a[0] < main->stockb.a[1])
 		swap(&main->stockb, "sb\n");
 }
 
 void	push_third_quarter(t_main *main)
 {
-	push(&main->stocka, &main->stockb, "pb 4\n");
+	push(&main->stocka, &main->stockb, "pb\n");
 	if (main->stockb.a[0] < main->stockb.a[1])
 		swap(&main->stockb, "sb\n");
 }
 
 void	push_fourth_quarter(t_main *main)
 {
-	find_median(&main->stockb);
 	int		high_median;
 
+	find_median(&main->stockb);
 	high_median = (main->stocka.big - main->stocka.three_quarters) / 2 +
-											main->stocka.three_quarters;
+		main->stocka.three_quarters;
 	if (main->stocka.a[0] < high_median)
 	{
 		push(&main->stocka, &main->stockb, "pb\n");
 		if (main->stockb.a[0] < main->stockb.a[1])
 			swap(&main->stockb, "sb\n");
 	}
-	//
 	else
 	{
 		push(&main->stocka, &main->stockb, "pb\n");
@@ -59,13 +56,11 @@ void	push_fourth_quarter(t_main *main)
 
 void		push_quarters(t_main *main, t_stock *stocka, int div)
 {
-	(void)main;
 	int		last_a;
 
-	//printf("__________________________________ push_quarters\n");
 	last_a = stocka->a[stocka->size - 1];
 	find_biggest(stocka);
-	while (*stocka->a != last_a) //|| stocka->size <= 9)
+	while (*stocka->a != last_a)
 	{
 		if (div == 0 && *stocka->a <= stocka->quarter)
 			push_first_quarter(main);
@@ -80,6 +75,4 @@ void		push_quarters(t_main *main, t_stock *stocka, int div)
 	}
 	if (stocka->size <= 5)
 		resolve_less_than_five(stocka, &main->stockb);
-	//printf("______________________ PRINTING AFTER PUSH_QUARTERS\n");
-	//print_stacks_ps(main);
 }

@@ -6,7 +6,7 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 16:52:23 by apreymon          #+#    #+#             */
-/*   Updated: 2021/03/23 15:50:30 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/21 20:45:03 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ t_list	*ft_lstnew(void *content)
 	return (lst);
 }
 
-//TRANSFORMED FOR GNL
-//
 t_list	*ft_lstnew_size(void const *content, size_t content_size)
 {
 	t_list	*a;

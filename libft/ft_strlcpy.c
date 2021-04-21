@@ -6,7 +6,7 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 14:02:22 by apreymon          #+#    #+#             */
-/*   Updated: 2019/11/20 18:37:48 by apreymon         ###   ########.fr       */
+/*   Updated: 2021/04/21 20:55:55 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ static int		ft_strlen(const char *str)
 size_t			ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t i;
-	size_t j;
 
 	i = 0;
-	j = 0;
 	if (size == 0)
 		return (ft_strlen(src));
 	while (src[i] && i < (size - 1))

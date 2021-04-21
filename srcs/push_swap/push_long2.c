@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
