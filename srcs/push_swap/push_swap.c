@@ -4,9 +4,6 @@
 #include "../../libft/includes/libft.h"
 #include <string.h>
 
-// it will segfault with this printing
-// but... so useful
-
 void	print_stacks_ps(t_main *main)
 {
 	int	i;
@@ -32,9 +29,7 @@ int		stack_order_b(t_stock *stock)
 	while (i <= size)
 	{
 		if (stock->a[i] < stock->a[i + 1] && i < size - 1)
-		{
 			ok = 1;
-		}
 		i++;
 	}
 	return (ok == 1) ? 1 : 0;
@@ -105,9 +100,9 @@ int		main(int ac, char **av)
 	if (stack_order(&main.stocka) || stack_order(&main.stockb))
 		find_moves(&main.stocka, &main.stockb, &main);
 	//print_stacks_ps(&main);
+	// careful to suppress below line before correction
 	(stack_order(&main.stocka) == 0 && main.stockb.size == 0) ?
 						write(1, "OK\n", 3) : write(1, "KO\n", 3);
 	free_program(&main);
-	printf("END OF PROGRAM\n");
 	return (0);
 }

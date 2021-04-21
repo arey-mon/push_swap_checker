@@ -3,6 +3,7 @@
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
 
+/*
 void	insert_bigger_b2(t_stock *stocka, t_stock *stockb, t_main *main, int i)
 {
 		if (find_biggest(stockb) == 0 || stockb->a[0] > stocka->a[0])
@@ -37,6 +38,7 @@ void	insert_bigger_b(t_stock *stocka, t_stock *stockb, t_main *main)
 		insert_bigger_b2(stocka, stockb, main, i);
 	//print_stacks_ps(main);
 }
+*/
 
 void	resolve_last_a(t_stock *stocka, t_main *main)
 {
@@ -52,10 +54,7 @@ void	resolve_last_a(t_stock *stocka, t_main *main)
 	}
 	while (stocka->a[size] < stocka->a[0] && stocka->a[size] > main->stockb.a[0]
 			&& stocka->a[size] != stocka->big)
-	{
-			reverse_rotate(stocka, "rra for last_a\n");
-	}
-	//print_stacks_ps(main);
+			reverse_rotate(stocka, "rra\n");
 }
 
 int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
@@ -67,7 +66,6 @@ int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
 	(void)main;
 	//printf("_______________________________ check_order\n");
 	//print_stacks_ps(main);
-	find_biggest(stocka);
 	while (stocka->a[i] != stocka->big)
 	{
 		if (stocka->size <= 5 && stack_order(stocka) != 0)
@@ -78,7 +76,7 @@ int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
 		{
 			tmp = stocka->a[i];
 			while (stocka->a[0] != tmp)
-				rotate(stocka, "ra of check_order\n");
+				rotate(stocka, "ra\n");
 			if (stocka->a[0] > stocka->a[1] && stockb->a[0] < stockb->a[1])
 			{
 				swap(stocka, "");
@@ -90,6 +88,5 @@ int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
  		}
 		i++;
 	}
-	//printf("check_order == 0\n");
 	return (0);
 }

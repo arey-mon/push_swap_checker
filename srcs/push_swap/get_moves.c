@@ -3,6 +3,7 @@
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
 
+/*
 int		do_first_operation(t_stock *stocka, t_stock *stockb, t_main *main)
 {
 	find_biggest(stockb);
@@ -16,18 +17,7 @@ int		exception_deal(t_stock *stockb)
 		resolve_less_than_five_b(stockb);
 	return (0);
 }
-
-void	end_stacks(t_stock *stocka, t_stock *stockb, t_main *main)
-{
-	(void)main;
-	//printf("_______________________________ end_stacks\n");
-	//print_stacks_ps(main);
-	while (stockb->a[0] > stocka->a[stocka->size - 1])
-		push(stockb, stocka, "pa\n");
-	while (stocka->a[stocka->size - 1] < stocka->a[0] &&
-		stocka->a[stocka->size - 1] > stockb->a[0])
-			reverse_rotate(stocka, "rra\n");
-}
+*/
 
 int		new_check_order(t_stock *stocka)
 {
@@ -48,7 +38,7 @@ int		new_check_order(t_stock *stocka)
 		}
 		i++;
 	}
-	i += 1;
+	i += 2;
 	while (stocka->a[i] != stocka->a[stocka->size - 1])
 	{
 		if (stocka->a[i] > stocka->a[i + 1])
@@ -80,7 +70,6 @@ void	new_algo(t_stock *stocka, t_stock *stockb, t_main *main)
 		rotate(stocka, "ra new_algo\n");
 		if (stockb->a[0] < stocka->a[0] && stockb->a[0] > stocka->a[size])
 			push(stockb, stocka, "pa3\n");
-		//print_stacks_ps(main);
 	}
 	resolve_last_a(stocka, main);
 	if (stockb->big == stockb->a[stockb->size - 1])
@@ -93,14 +82,11 @@ void	new_algo(t_stock *stocka, t_stock *stockb, t_main *main)
 		while (stockb->a[0] > stocka->a[0])
 			rotate(stocka, "ra new_algo\n");
 		push(stockb, stocka, "pa 1\n");
-		//print_stacks_ps(main);
 	}
-	//check_order(stocka, stockb, main);
 	if (stockb->size == 0 && new_check_order(stocka) == 0)
 	{
 		while (stocka->a[0] != stocka->small)
 		{
-		//printf("in that wild\n");
 			(find_smallest(stocka) > (int)stocka->size / 2) ? reverse_rotate(stocka, "rra\n") : rotate(stocka, "ra\n");
 		}
 	}
