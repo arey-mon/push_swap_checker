@@ -75,6 +75,6 @@ void		push_long(t_main *main, t_stock *stocka, int div)
 	}
 	if (stocka->size <= 5)
 		resolve_less_than_five(stocka, &main->stockb);
-	//printf("______________________ PRINTING AFTER PUSH_QUARTERS\n");
-	//print_stacks_ps(main);
+	printf("______________________ PRINTING AFTER PUSH_LONG\n");
+	print_stacks_ps(main);
 }

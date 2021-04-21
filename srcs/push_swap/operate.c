@@ -16,16 +16,8 @@ void	insert_bigger_b2(t_stock *stocka, t_stock *stockb, t_main *main, int i)
 		}
 		resolve_last_a(stocka, main);
 		push(stockb, stocka, "pa ....\n");
-		while (i-- > 1 && stocka->a[stocka->size - 1] > stockb->big)
-		{
-			find_biggest(stockb);
-			if (stocka->a[stocka->size - 1] < stockb->a[0] && stockb->a[0] == stockb->big)
-			{
-				push(stockb, stocka, "pa resolve ??\n");
-				break ;
-			}
-			reverse_rotate(stocka, "rra try !!!\n");
-		}
+		/*
+		*/
 		resolve_last_a(stocka, main);
 		if (stocka->a[0] > stocka->a[1])
 			swap(stocka, "sa after pa ...\n");
