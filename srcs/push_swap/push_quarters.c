@@ -5,7 +5,7 @@
 
 void	push_first_quarter(t_main *main)
 {
-	find_median(main, &main->stockb);
+	find_median(&main->stockb);
 	if (main->stocka.a[0] >= main->stockb.median || main->stockb.size == 1)
 	{
 		push(&main->stocka, &main->stockb, "pb 1\n");
@@ -38,7 +38,7 @@ void	push_third_quarter(t_main *main)
 
 void	push_fourth_quarter(t_main *main)
 {
-	find_median(main, &main->stockb);
+	find_median(&main->stockb);
 	int		high_median;
 
 	high_median = (main->stocka.big - main->stocka.three_quarters) / 2 +

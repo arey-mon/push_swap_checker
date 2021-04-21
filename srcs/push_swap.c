@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/21 19:17:15 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/21 20:02:02 by apolliner        ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "../../includes/checker.h"
@@ -72,22 +60,22 @@ void	free_program(t_main *main)
 	free(main->stockb.a);
 }
 
-int		resolve(t_main *main)
+int	resolve(t_main *main)
 {
 	if (stack_order(&main->stocka) == 0)
 		return (0);
 	else if (main->stocka.size <= 5)
 		resolve_less_than_five(&main->stocka, &main->stockb);
 	else if (main->stocka.size < 10)
-		resolve_small(&main->stocka, &main->stockb);
+		resolve_small(&main->stocka, &main->stockb, main);
 	else if (main->stocka.size <= 101)
 	{
-		find_median(&main->stocka);
+		find_median(main, &main->stocka);
 		solve_quarters(&main->stocka, main);
 	}
 	else
 	{
-		find_median_ten(&main->stocka);
+		find_median_ten(main, &main->stocka);
 		solve_ten(&main->stocka, main);
 	}
 	if (stack_order(&main->stocka) != 0 || (stack_order_b(&main->stockb) != 0))
@@ -105,15 +93,16 @@ int		main(int ac, char **av)
 	if (init_stock(&main.stocka, &main.stockb, &av[1], ac))
 	{
 		write(1, "Error\n", 6);
-		exit(1);
+		exit (1);
 	}
+	printf("you are dealing with [%d] elements\n", ac - 1);
 	resolve(&main);
 	if (stack_order(&main.stocka) || stack_order(&main.stockb))
 		find_moves(&main.stocka, &main.stockb, &main);
-		print_stacks_ps(&main);
+	//print_stacks_ps(&main);
 	// careful to suppress below line before correction
 	(stack_order(&main.stocka) == 0 && main.stockb.size == 0) ?
-		write(1, "OK\n", 3) : write(1, "KO\n", 3);
+						write(1, "OK\n", 3) : write(1, "KO\n", 3);
 	free_program(&main);
 	return (0);
 }

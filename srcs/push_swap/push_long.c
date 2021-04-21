@@ -5,7 +5,7 @@
 
 void	push_first_long(t_main *main)
 {
-	find_median(main, &main->stockb);
+	find_median(&main->stockb);
 	if (main->stocka.a[0] >= main->stockb.median || main->stockb.size == 1)
 	{
 		push(&main->stocka, &main->stockb, "pb\n");

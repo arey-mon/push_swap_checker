@@ -98,7 +98,7 @@ void	find_moves(t_stock *stocka, t_stock *stockb, t_main *main)
 	if (stocka->size <= 5)
 		resolve_less_than_five(stocka, stockb);
 	else if (stocka->size > 5 && stocka->size <= 9)
-		resolve_small(stocka, stockb, main);
+		resolve_small(stocka, stockb);
 	while (main->stockb.size > 0)
 	{
 		new_algo(stocka, stockb, main);

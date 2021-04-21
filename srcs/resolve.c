@@ -1,18 +1,24 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   resolve.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/21 19:20:26 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/21 19:47:24 by apolliner        ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
+#include <stdio.h>
 #include <stdlib.h>
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
+
+void		resolve_small(t_stock *stocka, t_stock *stockb, t_main *main)
+{
+	find_median(main, stocka);
+	while (stocka->size > 5)
+	{
+		if (*stocka->a < stocka->median)
+			push(stocka, stockb, "pb\n");
+		else
+			rotate(stocka, "ra\n");
+	}
+	resolve_less_than_five(stocka, stockb);
+	resolve_less_than_five_b(stockb);
+	if (stack_order_b(stockb) == 0)
+		while (stockb->size > 0)
+			push(stockb, stocka, "pa\n");
+}
 
 static void	sort_array(int *array, int len)
 {
@@ -35,18 +41,20 @@ static void	sort_array(int *array, int len)
 	}
 }
 
-void		find_median_ten(t_stock *stock)
+void	find_median_ten(t_main *main, t_stock *stock)
 {
+	//printf("_______________________________ FIND_MEDIAN\n");
 	int		tenth;
 	int		*arr;
 	int		i;
 	int		j;
+	(void)main;
 
 	i = 0;
 	j = 0;
 	tenth = stock->size / 10;
 	if (!(arr = (int*)malloc(sizeof(int) * (stock->size + 1))))
-		exit(1);
+		exit (1);
 	while (i < (int)stock->size)
 	{
 		arr[i++] = stock->a[j++];
@@ -63,8 +71,9 @@ void		find_median_ten(t_stock *stock)
 	stock->eight_long = arr[tenth * 9];
 }
 
-int			solve_ten(t_stock *stocka, t_main *main)
+int		solve_ten(t_stock *stocka, t_main *main)
 {
+	(void)main;
 	int		div;
 	int		i;
 
@@ -78,11 +87,14 @@ int			solve_ten(t_stock *stocka, t_main *main)
 		i++;
 		div++;
 	}
+	//printf("_______PRINT FROM solve_ten\n");
+	//print_stacks_ps(main);
 	return (0);
 }
 
-int			solve_quarters(t_stock *stocka, t_main *main)
+int		solve_quarters(t_stock *stocka, t_main *main)
 {
+	(void)main;
 	int		div;
 	int		i;
 
@@ -99,18 +111,21 @@ int			solve_quarters(t_stock *stocka, t_main *main)
 	return (0);
 }
 
-void		find_median(t_stock *stock)
+void	find_median(t_main *main, t_stock *stock)
 {
+	//printf("_______________________________ FIND_MEDIAN\n");
 	int		quarter_len;
 	int		*arr;
 	int		i;
 	int		j;
+	(void)main;
 
 	i = 0;
 	j = 0;
 	quarter_len = stock->size / 4;
+
 	if (!(arr = (int*)malloc(sizeof(int) * (stock->size + 1))))
-		exit(1);
+		exit (1);
 	while (i < (int)stock->size)
 	{
 		arr[i++] = stock->a[j++];
@@ -119,4 +134,5 @@ void		find_median(t_stock *stock)
 	stock->quarter = arr[quarter_len];
 	stock->median = arr[quarter_len * 2];
 	stock->three_quarters = arr[quarter_len * 3];
+	//printf("1/4 = %ld, median = %ld, 3/4 = %ld\n", stock->quarter, stock->median, stock->three_quarters);
 }
