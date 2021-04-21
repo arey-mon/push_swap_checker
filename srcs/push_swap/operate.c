@@ -16,8 +16,6 @@ void	insert_bigger_b2(t_stock *stocka, t_stock *stockb, t_main *main, int i)
 		}
 		resolve_last_a(stocka, main);
 		push(stockb, stocka, "pa ....\n");
-		/*
-		*/
 		resolve_last_a(stocka, main);
 		if (stocka->a[0] > stocka->a[1])
 			swap(stocka, "sa after pa ...\n");
@@ -46,32 +44,16 @@ void	resolve_last_a(t_stock *stocka, t_main *main)
 
 	size = stocka->size - 1;
 	find_biggest(&main->stockb);
-	// a rrr can be added in this function
-	// happens when stockb->big is > 1/2 of (B)
-	// and a[last] > b->big
-	//
 	if (find_biggest(&main->stockb) > (int)main->stockb.size / 2 - 1 && main->stockb.size > 2)
 	{
 		while (find_biggest(&main->stockb) != 0)
 			reverse_rotate(&main->stockb, "rrb\n");
 		//print_stacks_ps(main);
 	}
-	//*/
 	while (stocka->a[size] < stocka->a[0] && stocka->a[size] > main->stockb.a[0]
 			&& stocka->a[size] != stocka->big)
 	{
-		/*
-		if (find_biggest(&main->stockb) > (int)main->stockb.size / 2 - 1
-		&& main->stockb.size > 2 && stocka->a[size] > main->stockb.big)
-		{
-			reverse_rotate(&main->stockb, "");
-			reverse_rotate(stocka, "rrr\n");
-			print_stacks_ps(main);
-		}
-		else
-		*/
 			reverse_rotate(stocka, "rra for last_a\n");
-		//print_stacks_ps(main);
 	}
 	//print_stacks_ps(main);
 }
@@ -84,13 +66,14 @@ int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
 	i = 0;
 	(void)main;
 	//printf("_______________________________ check_order\n");
+	//print_stacks_ps(main);
 	find_biggest(stocka);
 	while (stocka->a[i] != stocka->big)
 	{
 		if (stocka->size <= 5 && stack_order(stocka) != 0)
 			resolve_less_than_five(stocka, stockb);
 		if (stack_order(stocka) == 0)
-			break ;
+			return (0) ;
 		else if (stocka->a[i] > stocka->a[i + 1])
 		{
 			tmp = stocka->a[i];
@@ -103,8 +86,10 @@ int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
 			}
 			else if (stocka->a[0] > stocka->a[1])
 				swap(stocka, "sa\n");
-		}
+			return (1); // ADDED
+ 		}
 		i++;
 	}
+	//printf("check_order == 0\n");
 	return (0);
 }

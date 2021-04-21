@@ -8,13 +8,13 @@ void	push_first_quarter(t_main *main)
 	find_median(main, &main->stockb);
 	if (main->stocka.a[0] >= main->stockb.median || main->stockb.size == 1)
 	{
-		push(&main->stocka, &main->stockb, "pb\n");
+		push(&main->stocka, &main->stockb, "pb 1\n");
 		if (main->stockb.a[0] < main->stockb.a[1] && main->stockb.size > 4)
 			swap(&main->stockb, "sb\n");
 	}
 	else
 	{
-		push(&main->stocka, &main->stockb, "pb\n");
+		push(&main->stocka, &main->stockb, "pb 2\n");
 		rotate(&main->stockb, "ra\n");
 	}
 	if (main->stockb.size == 4)
@@ -24,14 +24,14 @@ void	push_first_quarter(t_main *main)
 
 void	push_second_quarter(t_main *main)
 {
-	push(&main->stocka, &main->stockb, "pb\n");
+	push(&main->stocka, &main->stockb, "pb 3\n");
 	if (main->stockb.a[0] < main->stockb.a[1])
 		swap(&main->stockb, "sb\n");
 }
 
 void	push_third_quarter(t_main *main)
 {
-	push(&main->stocka, &main->stockb, "pb\n");
+	push(&main->stocka, &main->stockb, "pb 4\n");
 	if (main->stockb.a[0] < main->stockb.a[1])
 		swap(&main->stockb, "sb\n");
 }

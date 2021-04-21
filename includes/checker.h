@@ -42,6 +42,7 @@ typedef struct	s_main
 **  PROGRAM (PUSH_SWAP)
 */
 int		check_order(t_stock *stocka, t_stock *stockb, t_main *main);
+int		new_check_order(t_stock *stocka);
 int		exception_deal(t_stock *stockb);
 void	find_median(t_main *main, t_stock *stock);
 void	find_median_ten(t_main *main, t_stock *stock);

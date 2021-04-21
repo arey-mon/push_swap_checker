@@ -101,7 +101,6 @@ int		main(int ac, char **av)
 		exit (1);
 	}
 	printf("you are dealing with [%d] elements\n", ac - 1);
-	//print_stacks_ps(&main);
 	resolve(&main);
 	if (stack_order(&main.stocka) || stack_order(&main.stockb))
 		find_moves(&main.stocka, &main.stockb, &main);
