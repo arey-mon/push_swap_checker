@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   instructions.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/21 19:17:43 by apolliner         #+#    #+#             */
+/*   Updated: 2021/04/21 19:55:33 by apolliner        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../../includes/checker.h"
@@ -24,7 +36,7 @@ void	execute_instructions(char *line, t_stock *stocka, t_stock *stockb)
 		reverse_rotate(stockb, "");
 }
 
-int		check_instructions(char *line, t_stock *stocka, t_stock *stockb, int err)
+int		check_instructions(char *line, t_stock *stocka, t_stock *stockb, int er)
 {
 	const char	*instr[] = {"sa\n", "sb\n", "ss\n", "pa\n", "pb\n", "ra\n",
 		"rb\n", "rr\n", "rra\n", "rrb\n", "rrr\n", 0};
@@ -46,11 +58,11 @@ int		check_instructions(char *line, t_stock *stocka, t_stock *stockb, int err)
 	if (ok == 0)
 		execute_instructions(line, stocka, stockb);
 	else
-		err = 1;
+		er = 1;
 	return (ok);
 }
 
-int	read_instructions2(t_stock *stocka, int ret)
+int		read_instructions2(t_stock *stocka, int ret)
 {
 	if (ret == 0)
 		stack_order(stocka);
@@ -62,7 +74,7 @@ int	read_instructions2(t_stock *stocka, int ret)
 	return (0);
 }
 
-int	read_instructions(t_stock *stocka, t_stock *stockb)
+int		read_instructions(t_stock *stocka, t_stock *stockb)
 {
 	int		ret;
 	char	line[4];
@@ -90,8 +102,7 @@ int	read_instructions(t_stock *stocka, t_stock *stockb)
 	if (err == 1)
 	{
 		write(1, "Error\n", 6);
-		// check free
-		exit (1);
+		exit(1);
 	}
 	return (0);
 }

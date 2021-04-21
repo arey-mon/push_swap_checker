@@ -25,3 +25,4 @@ ISSUES
 . norme
 . integers_check_error is false if a number size is = 10 and above min or max, it returns error when shouldn't
 . writing 2- as arg works...
+. in checker, does OK:KO has to be written after "error\n" ??

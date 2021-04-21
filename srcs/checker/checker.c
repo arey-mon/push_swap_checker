@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/21 19:17:36 by apolliner         #+#    #+#             */
+/*   Updated: 2021/04/21 19:17:39 by apolliner        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../../includes/checker.h"
@@ -49,7 +61,7 @@ int		main(int ac, char **av)
 	if (init_stock(&main.stocka, &main.stockb, &av[1], ac))
 	{
 		write(1, "Error\n", 6);
-		exit (1);
+		exit(1);
 	}
 	read_instructions(&main.stocka, &main.stockb);
 	free_program(&main);
