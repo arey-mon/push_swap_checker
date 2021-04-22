@@ -6,11 +6,10 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:17:43 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/21 19:55:33 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/22 15:33:01 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
@@ -62,10 +61,10 @@ int		check_instructions(char *line, t_stock *stocka, t_stock *stockb, int er)
 	return (ok);
 }
 
-int		read_instructions2(t_stock *stocka, int ret)
+int		read_instructions2(t_stock *stocka, int ret, int err)
 {
 	if (ret == 0)
-		stack_order(stocka);
+		stack_order(stocka, err);
 	else
 	{
 		write(1, "Error\n", 6);
@@ -74,16 +73,14 @@ int		read_instructions2(t_stock *stocka, int ret)
 	return (0);
 }
 
-int		read_instructions(t_stock *stocka, t_stock *stockb)
+int		read_instructions(t_stock *stocka, t_stock *stockb, int ret, int err)
 {
-	int		ret;
 	char	line[4];
-	int		err;
 
 	err = 0;
 	ft_bzero(line, 3);
 	if ((ret = read(STDIN_FILENO, line, 4)) <= 0)
-		read_instructions2(stocka, ret);
+		read_instructions2(stocka, ret, err);
 	else
 	{
 		if (check_instructions(&line[0], stocka, stockb, err))
@@ -92,7 +89,7 @@ int		read_instructions(t_stock *stocka, t_stock *stockb)
 		{
 			if (ret == 0)
 			{
-				stack_order(stocka);
+				stack_order(stocka, err);
 				break ;
 			}
 			if (check_instructions(line, stocka, stockb, err))
@@ -100,9 +97,6 @@ int		read_instructions(t_stock *stocka, t_stock *stockb)
 		}
 	}
 	if (err == 1)
-	{
-		write(1, "Error\n", 6);
-		exit(1);
-	}
+		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:17:15 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/22 15:16:39 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/22 15:18:49 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ int		main(int ac, char **av)
 
 	main.stocka.write = 1;
 	main.stockb.write = 1;
-	check_leaks();
 	(ac > 1) ? init_stock(&main.stocka, &main.stockb, &av[1], ac) : exit(1);
 	free_program(&main);
 	if (init_stock(&main.stocka, &main.stockb, &av[1], ac))
@@ -117,6 +116,6 @@ int		main(int ac, char **av)
 	(stack_order(&main.stocka) == 0 && main.stockb.size == 0) ?
 		write(1, "OK\n", 3) : write(1, "KO\n", 3);
 	free_program(&main);
-	check_leaks();
+	check_leaks(); //think anout retiring that and the file.c
 	return (0);
 }

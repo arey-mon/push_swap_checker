@@ -14,15 +14,10 @@ Pour 500 values = barème de 1 à 5
   - moins de 10000: 2
   - moins de 11500: 1
 
-TESTINGS
-1. make a lot of testings with instructions
-2. make a lot of tests involving operations and size
-3. value = 0
-
 ISSUES
-? program should not quit before all instructions are read,
 . program contains some exit(1), but it impeaches free
 . norme
 . integers_check_error is false if a number size is = 10 and above min or max, it returns error when shouldn't
 . writing 2- as arg works...
 . in checker, does OK:KO has to be written after "error\n" ??
+. est-ce qu'on a le droit d'avoir une fonction avec printf pour afficher les stacks ?

@@ -89,10 +89,10 @@ int		init_stock(t_stock *stocka, t_stock *stockb, char **arg, int ac);
 int		integers_check(char *str);
 int		integers_check_pos(char *str);
 int		integers_check_neg(char *str);
-int		read_instructions(t_stock *stocka, t_stock *stockb);
-int		read_instructions2(t_stock *stocka, int ret);
+int		read_instructions(t_stock *stocka, t_stock *stockb, int ret, int err);
+int		read_instructions2(t_stock *stocka, int ret, int err);
 int		split_args(char *fill, t_stock *stock, int i);
-int		stack_order(t_stock *stock);
+int		stack_order(t_stock *stock, int err);
 /*
 ** Functions_set
 */
