@@ -6,11 +6,10 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:59:03 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/22 15:15:33 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/22 15:41:52 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
@@ -57,8 +56,6 @@ int		split_args(char *fill, t_stock *stock, int i)
 		{
 			if (ft_atoi_int(fill, &num))
 				return (1);
-			else
-				ft_atoi_int(fill, &num);
 			stock->a[i] = num;
 			stock->size++;
 			break ;
@@ -113,6 +110,7 @@ int		fill_stack(int ac, char **arg, t_stock *stocka)
 int		init_stock(t_stock *stocka, t_stock *stockb, char **arg, int ac)
 {
 	int		malloc_size;
+
 	malloc_size = get_args_size(arg, ac);
 	if (!(stocka->a = (int *)malloc(sizeof(int) * malloc_size)))
 		return (1);

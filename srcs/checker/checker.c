@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:17:36 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/22 15:33:25 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/22 15:34:01 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,5 @@ int		main(int ac, char **av)
 		exit(1);
 	}
 	free_program(&main);
-	check_leaks();
 	return (0);
 }

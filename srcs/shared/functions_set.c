@@ -1,4 +1,15 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   functions_set.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 15:35:59 by apolliner         #+#    #+#             */
+/*   Updated: 2021/04/22 15:36:15 by apolliner        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <unistd.h>
 #include "../../includes/checker.h"
@@ -12,6 +23,7 @@ void	swap_int(int a, int b)
 	a = b;
 	b = save;
 }
+
 void	swap(t_stock *stock, char *str)
 {
 	int	save;

@@ -1,4 +1,15 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 15:37:03 by apolliner         #+#    #+#             */
+/*   Updated: 2021/04/22 15:37:17 by apolliner        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <unistd.h>
 #include "../../includes/checker.h"
@@ -6,7 +17,7 @@
 
 void	erase(t_stock *stack, size_t index)
 {
-	size_t i;
+	size_t	i;
 
 	if (stack->size == 0 || index >= stack->size)
 		return ;
@@ -21,7 +32,7 @@ void	erase(t_stock *stack, size_t index)
 
 void	push_val(t_stock *dest, int val)
 {
-	int i;
+	int	i;
 
 	i = dest->size;
 	while (i > 0)
