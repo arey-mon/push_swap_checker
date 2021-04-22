@@ -6,7 +6,7 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 16:52:52 by apreymon          #+#    #+#             */
-/*   Updated: 2021/04/13 13:11:02 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/22 17:01:31 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 # include "get_next_line.h"
 
 # define BUFFER_SIZE 100
-# define BUFF_SIZE 32		/// ADD FOR GNL
+# define BUFF_SIZE
 
 typedef struct		s_list
 {
 	void				*content;
 	struct s_list		*next;
-	size_t			content_size; ////  ADD FOR GNL
+	size_t				content_size;
 }					t_list;
 
 int					ft_atoi(const char *str);
