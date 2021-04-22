@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_moves.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 15:57:38 by apolliner         #+#    #+#             */
+/*   Updated: 2021/04/22 16:04:46 by apolliner        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
@@ -8,7 +20,7 @@ int		new_check_order(t_stock *stocka)
 
 	i = 0;
 	find_biggest(stocka);
-	if (stack_order(stocka) == 0)
+	if (stack_order_ps(stocka) == 0)
 		return (0) ;
 	while (stocka->a[i + 1] != stocka->big)
 	{
@@ -26,16 +38,30 @@ int		new_check_order(t_stock *stocka)
 	return(0);
 	
 }
-void	new_algo(t_stock *stocka, t_stock *stockb, t_main *main)
-{
-	int		size;
-	(void)main;
 
-	size = stocka->size - 1;
+void	prepare_algo(t_stock *stocka, t_stock *stockb)
+{
 	find_biggest(stockb);
 	find_biggest(stocka);
 	find_smallest(stocka);
 	find_smallest(stockb);
+}
+
+void	find_rotation(t_stock *stocka)
+{
+	while (stocka->a[0] != stocka->small)
+	{
+		(find_smallest(stocka) > (int)stocka->size / 2) ?
+		reverse_rotate(stocka, "rra\n") : rotate(stocka, "ra\n");
+	}
+}
+
+void	new_algo(t_stock *stocka, t_stock *stockb, t_main *main)
+{
+	int		size;
+
+	size = stocka->size - 1;
+	prepare_algo(stocka, stockb);
 	while (stockb->a[0] > stocka->a[0])
 	{
 		rotate(stocka, "ra\n");
@@ -55,18 +81,11 @@ void	new_algo(t_stock *stocka, t_stock *stockb, t_main *main)
 		push(stockb, stocka, "pa\n");
 	}
 	if (stockb->size == 0 && new_check_order(stocka) == 0)
-	{
-		while (stocka->a[0] != stocka->small)
-		{
-			(find_smallest(stocka) > (int)stocka->size / 2) ?
-			reverse_rotate(stocka, "rra\n") : rotate(stocka, "ra\n");
-		}
-	}
+		find_rotation(stocka);
 }
 
 void	find_moves(t_stock *stocka, t_stock *stockb, t_main *main)
 {
-	//printf("_______________________________ find_moves\n");
 	if (stocka->size <= 5)
 		resolve_less_than_five(stocka, stockb);
 	else if (stocka->size > 5 && stocka->size <= 9)
@@ -74,7 +93,7 @@ void	find_moves(t_stock *stocka, t_stock *stockb, t_main *main)
 	while (main->stockb.size > 0)
 	{
 		new_algo(stocka, stockb, main);
-		if (stack_order(stocka) == 0 && stockb->size == 0)
+		if (stack_order_ps(stocka) == 0 && stockb->size == 0)
 			break ;
 	}
 }

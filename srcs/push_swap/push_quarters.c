@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_quarters.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 15:54:20 by apolliner         #+#    #+#             */
+/*   Updated: 2021/04/22 15:54:46 by apolliner        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
@@ -54,7 +66,7 @@ void	push_fourth_quarter(t_main *main)
 	}
 }
 
-void		push_quarters(t_main *main, t_stock *stocka, int div)
+void	push_quarters(t_main *main, t_stock *stocka, int div)
 {
 	int		last_a;
 
@@ -64,11 +76,14 @@ void		push_quarters(t_main *main, t_stock *stocka, int div)
 	{
 		if (div == 0 && *stocka->a <= stocka->quarter)
 			push_first_quarter(main);
-		else if (div == 1 && *stocka->a >= stocka->quarter && *stocka->a <= stocka->median)
+		else if (div == 1 && *stocka->a >= stocka->quarter && *stocka->a <=
+				stocka->median)
 			push_second_quarter(main);
-		else if (div == 2 && *stocka->a >= stocka->median && *stocka->a <= stocka->three_quarters)
+		else if (div == 2 && *stocka->a >= stocka->median && *stocka->a <=
+				stocka->three_quarters)
 			push_third_quarter(main);
-		else if (div == 3 && *stocka->a >= stocka->three_quarters && *stocka->a != stocka->big)
+		else if (div == 3 && *stocka->a >= stocka->three_quarters &&
+				*stocka->a != stocka->big)
 			push_fourth_quarter(main);
 		else
 			rotate(stocka, "ra\n");

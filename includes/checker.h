@@ -73,6 +73,7 @@ int		sort(t_stock *stocka, t_stock *stockb, t_main *main);
 int		find_biggest(t_stock *stock);
 int		find_smallest(t_stock *stock);
 void	get_malloc_size(t_stock *stocka, t_main *main);
+int		stack_order_ps(t_stock *stock);
 int		stack_order_b(t_stock *stock);
 /*
 **  PROGRAM (CHECKER && SHARED)

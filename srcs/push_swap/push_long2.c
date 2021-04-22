@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_long2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 15:46:39 by apolliner         #+#    #+#             */
+/*   Updated: 2021/04/22 15:46:46 by apolliner        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
@@ -35,7 +47,7 @@ void	push_nine_long(t_main *main)
 	int		high_median;
 
 	high_median = (main->stocka.big - main->stocka.three_quarters) / 2 +
-											main->stocka.three_quarters;
+		main->stocka.three_quarters;
 	if (main->stocka.a[0] <= high_median)
 	{
 		push(&main->stocka, &main->stockb, "pb\n");

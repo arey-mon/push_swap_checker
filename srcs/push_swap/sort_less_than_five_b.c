@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_less_than_five_b.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 15:55:19 by apolliner         #+#    #+#             */
+/*   Updated: 2021/04/22 15:55:47 by apolliner        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
-#include <stdio.h>
 
 int		resolve_three_b(t_stock *stockb)
 {
@@ -10,14 +21,12 @@ int		resolve_three_b(t_stock *stockb)
 			swap(stockb, "sb\n");
 		if (stockb->a[1] < stockb->a[2])
 		{
-		//printf("IF1\n");
 			rotate(stockb, "rb\n");
 			swap(stockb, "sb\n");
 			reverse_rotate(stockb, "rrb\n");
 		}
 		else if (stockb->a[stockb->size - 1] > stockb->a[stockb->size - 2])
 		{
-		//printf("IF2\n");
 			reverse_rotate(stockb, "rrb\n");
 			reverse_rotate(stockb, "rrb\n");
 			swap(stockb, "sb\n");
@@ -30,7 +39,6 @@ int		resolve_three_b(t_stock *stockb)
 
 int		resolve_four_b(t_stock *stockb)
 {
-//printf("resolve_four_b\n");
 	find_biggest(stockb);
 	find_smallest(stockb);
 	while (stack_order_b(stockb) != 0)
@@ -53,7 +61,6 @@ int		resolve_four_b(t_stock *stockb)
 			rotate(stockb, "rrb\n");
 		}
 	}
-//printf(">>>>>resolve_four_b\n");
 	return (0);
 }
 
@@ -61,7 +68,6 @@ int		resolve_less_than_five_b(t_stock *stockb)
 {
 	int	i;
 
-	//printf("resolve_less_than_five_b\n");
 	i = 0;
 	if (stockb->size == 4)
 		resolve_four_b(stockb);

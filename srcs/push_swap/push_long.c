@@ -1,4 +1,15 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_long.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 15:46:11 by apolliner         #+#    #+#             */
+/*   Updated: 2021/04/22 15:55:01 by apolliner        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
@@ -42,7 +53,7 @@ void	push_fourth_long(t_main *main)
 		swap(&main->stockb, "sb\n");
 }
 
-void		push_long(t_main *main, t_stock *stocka, int div)
+void	push_long(t_main *main, t_stock *stocka, int div)
 {
 	int		last_a;
 

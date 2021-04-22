@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   biggest_smallest.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 15:54:02 by apolliner         #+#    #+#             */
+/*   Updated: 2021/04/22 15:54:06 by apolliner        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
-#include <stdio.h>
 
 int		find_biggest(t_stock *stock)
 {

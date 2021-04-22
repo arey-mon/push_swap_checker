@@ -6,13 +6,12 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:20:31 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/21 20:07:55 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/22 15:45:51 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
-#include <stdio.h>
 
 void	resolve_small(t_stock *stocka, t_stock *stockb)
 {
@@ -89,7 +88,7 @@ int		resolve_less_than_five(t_stock *stocka, t_stock *stockb)
 	else if (stocka->size == 4)
 		resolve_four(stocka, stockb);
 	else if (stocka->size == 5)
-		while (stack_order(stocka))
+		while (stack_order_ps(stocka))
 			resolve_five(stocka, stockb);
 	return (0);
 }
