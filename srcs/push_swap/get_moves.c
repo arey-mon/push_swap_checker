@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:57:38 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/22 16:04:46 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/22 16:06:23 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		new_check_order(t_stock *stocka)
 	i = 0;
 	find_biggest(stocka);
 	if (stack_order_ps(stocka) == 0)
-		return (0) ;
+		return (0);
 	while (stocka->a[i + 1] != stocka->big)
 	{
 		if (stocka->a[i] > stocka->a[i + 1])
@@ -35,8 +35,7 @@ int		new_check_order(t_stock *stocka)
 			return (1);
 		i++;
 	}
-	return(0);
-	
+	return (0);
 }
 
 void	prepare_algo(t_stock *stocka, t_stock *stockb)

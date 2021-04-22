@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:20:26 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/21 19:47:24 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/22 16:34:02 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,14 @@ int			solve_ten(t_stock *stocka, t_main *main)
 {
 	int		div;
 	int		i;
+	int		last_a;
 
 	div = 0;
 	i = 0;
+	last_a = 0;
 	while (stocka->a[i])
 	{
-		push_long(main, stocka, div);
+		push_long(main, stocka, div, last_a);
 		if (div == 9)
 			break ;
 		i++;

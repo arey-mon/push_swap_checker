@@ -6,28 +6,14 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:17:15 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/22 15:57:28 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/22 16:40:28 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
 #include <string.h>
-
-void	print_stacks_ps(t_main *main)
-{
-	int	i;
-
-	i = 0;
-	printf("%15s   %15s\n", "Stack A", "Stack B");
-	while (main->stocka.a[i] || main->stockb.a[i])
-	{
-		printf("%15d %17d\n", main->stocka.a[i], main->stockb.a[i]);
-		i++;
-	}
-}
 
 int		stack_order_b(t_stock *stock)
 {
@@ -112,11 +98,6 @@ int		main(int ac, char **av)
 	resolve(&main);
 	if (stack_order_ps(&main.stocka) || stack_order_ps(&main.stockb))
 		find_moves(&main.stocka, &main.stockb, &main);
-	//	print_stacks_ps(&main);
-	// careful to suppress below line before correction
-	(stack_order_ps(&main.stocka) == 0 && main.stockb.size == 0) ?
-		write(1, "OK\n", 3) : write(1, "KO\n", 3);
 	free_program(&main);
-	check_leaks(); //think anout retiring that and the file.c
 	return (0);
 }

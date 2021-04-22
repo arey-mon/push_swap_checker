@@ -6,28 +6,14 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:17:36 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/22 15:34:01 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/22 16:40:12 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "../../includes/checker.h"
 #include <string.h>
 #include <unistd.h>
-
-void	print_stacks(t_stock *stocka, t_stock *stockb)
-{
-	int	i;
-
-	i = 0;
-	printf("%15s   %15s\n", "Stack A", "Stack B");
-	while (stocka->a[i] || stockb->a[i])
-	{
-		printf("%15d %17d\n", stocka->a[i], stockb->a[i]);
-		i++;
-	}
-}
 
 int		stack_order(t_stock *stock, int err)
 {
