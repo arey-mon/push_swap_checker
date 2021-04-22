@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fill_stock_a.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 14:59:03 by apolliner         #+#    #+#             */
+/*   Updated: 2021/04/22 15:15:33 by apolliner        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../../includes/checker.h"
@@ -101,7 +113,6 @@ int		fill_stack(int ac, char **arg, t_stock *stocka)
 int		init_stock(t_stock *stocka, t_stock *stockb, char **arg, int ac)
 {
 	int		malloc_size;
-
 	malloc_size = get_args_size(arg, ac);
 	if (!(stocka->a = (int *)malloc(sizeof(int) * malloc_size)))
 		return (1);
@@ -110,12 +121,6 @@ int		init_stock(t_stock *stocka, t_stock *stockb, char **arg, int ac)
 	stocka->size = 0;
 	stockb->size = 0;
 	if (fill_stack(ac, arg, stocka))
-	{
-	// THOSE FREE RESULT IN ABORT IF YOU DO FOR EXAMPLE
-	// ./checker 2 -1 1 -42 -24 -a 1 >> Ctl+D
-		//free(stocka->a);
-		//free(stockb->a);
 		return (1);
-	}
 	return (0);
 }

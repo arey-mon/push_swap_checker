@@ -61,6 +61,7 @@ void		find_median_ten(t_stock *stock)
 	stock->seven_long = arr[tenth * 7];
 	stock->eight_long = arr[tenth * 8];
 	stock->eight_long = arr[tenth * 9];
+	free(arr);
 }
 
 int			solve_ten(t_stock *stocka, t_main *main)
@@ -119,4 +120,5 @@ void		find_median(t_stock *stock)
 	stock->quarter = arr[quarter_len];
 	stock->median = arr[quarter_len * 2];
 	stock->three_quarters = arr[quarter_len * 3];
+	free(arr);
 }
