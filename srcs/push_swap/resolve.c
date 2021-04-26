@@ -64,7 +64,7 @@ void		find_median_ten(t_stock *stock)
 	free(arr);
 }
 
-int			solve_ten(t_stock *stocka, t_main *main)
+int			solve_ten(t_stock *stocka, t_pgm *pgm)
 {
 	int		div;
 	int		i;
@@ -75,7 +75,7 @@ int			solve_ten(t_stock *stocka, t_main *main)
 	last_a = 0;
 	while (stocka->a[i])
 	{
-		push_long(main, stocka, div, last_a);
+		push_long(pgm, stocka, div, last_a);
 		if (div == 9)
 			break ;
 		i++;
@@ -84,7 +84,7 @@ int			solve_ten(t_stock *stocka, t_main *main)
 	return (0);
 }
 
-int			solve_quarters(t_stock *stocka, t_main *main)
+int			solve_quarters(t_stock *stocka, t_pgm *pgm)
 {
 	int		div;
 	int		i;
@@ -93,7 +93,7 @@ int			solve_quarters(t_stock *stocka, t_main *main)
 	i = 0;
 	while (stocka->a[i])
 	{
-		push_quarters(main, stocka, div);
+		push_quarters(pgm, stocka, div);
 		if (div == 4)
 			break ;
 		i++;

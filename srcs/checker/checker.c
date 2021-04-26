@@ -34,32 +34,32 @@ int		stack_order(t_stock *stock, int err)
 	return (ok == 1) ? 1 : 0;
 }
 
-void	free_program(t_main *main)
+void	free_program(t_pgm *pgm)
 {
-	free(main->stocka.a);
-	free(main->stockb.a);
+	free(pgm->stocka.a);
+	free(pgm->stockb.a);
 }
 
 int		main(int ac, char **av)
 {
-	t_main			main;
+	t_pgm			pgm;
 	int				ret;
 	int				err;
 
 	ret = 0;
 	err = 0;
-	(ac > 1) ? init_stock(&main.stocka, &main.stockb, &av[1], ac) : exit(1);
-	free_program(&main);
-	if (init_stock(&main.stocka, &main.stockb, &av[1], ac))
+	(ac > 1) ? init_stock(&pgm.stocka, &pgm.stockb, &av[1], ac) : exit(1);
+	free_program(&pgm);
+	if (init_stock(&pgm.stocka, &pgm.stockb, &av[1], ac))
 	{
 		write(1, "Error\n", 6);
 		exit(1);
 	}
-	if (read_instructions(&main.stocka, &main.stockb, ret, err))
+	if (read_instructions(&pgm.stocka, &pgm.stockb, ret, err))
 	{
 		write(1, "Error\n", 6);
 		exit(1);
 	}
-	free_program(&main);
+	free_program(&pgm);
 	return (0);
 }

@@ -55,7 +55,7 @@ void	find_rotation(t_stock *stocka)
 	}
 }
 
-void	new_algo(t_stock *stocka, t_stock *stockb, t_main *main)
+void	new_algo(t_stock *stocka, t_stock *stockb, t_pgm *pgm)
 {
 	int		size;
 
@@ -67,14 +67,14 @@ void	new_algo(t_stock *stocka, t_stock *stockb, t_main *main)
 		if (stockb->a[0] < stocka->a[0] && stockb->a[0] > stocka->a[size])
 			push(stockb, stocka, "pa\n");
 	}
-	resolve_last_a(stocka, main);
+	resolve_last_a(stocka, pgm);
 	if (stockb->big == stockb->a[stockb->size - 1])
 		reverse_rotate(stockb, "rrb\n");
 	if (stocka->a[size] > stockb->a[0] && stocka->a[0] != stocka->small)
 		reverse_rotate(stocka, "rra\n");
 	else
 	{
-		resolve_last_a(stocka, main);
+		resolve_last_a(stocka, pgm);
 		while (stockb->a[0] > stocka->a[0])
 			rotate(stocka, "ra\n");
 		push(stockb, stocka, "pa\n");
@@ -83,15 +83,15 @@ void	new_algo(t_stock *stocka, t_stock *stockb, t_main *main)
 		find_rotation(stocka);
 }
 
-void	find_moves(t_stock *stocka, t_stock *stockb, t_main *main)
+void	find_moves(t_stock *stocka, t_stock *stockb, t_pgm *pgm)
 {
 	if (stocka->size <= 5)
 		resolve_less_than_five(stocka, stockb);
 	else if (stocka->size > 5 && stocka->size <= 9)
 		resolve_small(stocka, stockb);
-	while (main->stockb.size > 0)
+	while (pgm->stockb.size > 0)
 	{
-		new_algo(stocka, stockb, main);
+		new_algo(stocka, stockb, pgm);
 		if (stack_order_ps(stocka) == 0 && stockb->size == 0)
 			break ;
 	}

@@ -35,7 +35,7 @@ void	execute_instructions(char *line, t_stock *stocka, t_stock *stockb)
 		reverse_rotate(stockb, "");
 }
 
-int		check_instructions(char *line, t_stock *stocka, t_stock *stockb, int er)
+int		check_instructions(char *line, t_stock *stocka, t_stock *stockb)
 {
 	const char	*instr[] = {"sa\n", "sb\n", "ss\n", "pa\n", "pb\n", "ra\n",
 		"rb\n", "rr\n", "rra\n", "rrb\n", "rrr\n", 0};
@@ -56,8 +56,6 @@ int		check_instructions(char *line, t_stock *stocka, t_stock *stockb, int er)
 	}
 	if (ok == 0)
 		execute_instructions(line, stocka, stockb);
-	else
-		er = 1;
 	return (ok);
 }
 
@@ -83,7 +81,7 @@ int		read_instructions(t_stock *stocka, t_stock *stockb, int ret, int err)
 		read_instructions2(stocka, ret, err);
 	else
 	{
-		if (check_instructions(&line[0], stocka, stockb, err))
+		if (check_instructions(&line[0], stocka, stockb))
 			err = 1;
 		while ((ret = read(STDIN_FILENO, line, 5)) >= 0)
 		{
@@ -92,7 +90,7 @@ int		read_instructions(t_stock *stocka, t_stock *stockb, int ret, int err)
 				stack_order(stocka, err);
 				break ;
 			}
-			if (check_instructions(line, stocka, stockb, err))
+			if (check_instructions(line, stocka, stockb))
 				err = 1;
 		}
 	}

@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-int				create_line(char **stock, char **line, int ret)
+int				create_line(char **stock, char **line)
 {
 	int		i;
 	char	*tmp;
@@ -34,10 +34,7 @@ int				create_line(char **stock, char **line, int ret)
 	{
 		*line = ft_strdup(*stock);
 		if ((*stock)[i] == '\0')
-		{
-			ret = 0;
 			return (0);
-		}
 		free(*stock);
 		*stock = NULL;
 	}
@@ -59,9 +56,7 @@ int				get_next_line(int fd, char **line)
 	char			*ret_string;
 	char			buf[BUFFER_SIZE + 1];
 	int				ret;
-	int				i;
 
-	i = 0;
 	get_next_line2(fd, line);
 	while ((ret = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
@@ -77,7 +72,7 @@ int				get_next_line(int fd, char **line)
 		if (ft_strchr(rest[fd], '\n'))
 			break ;
 	}
-	if (ret == 0 && rest[fd] == '\0')
+	if (ret == 0 && *rest[fd] == '\0')
 		return (0);
 	return (check_ret(ret, fd, rest, line));
 }
@@ -87,5 +82,5 @@ int				check_ret(int ret, int fd, char **stock, char **line)
 	if (ret < 0)
 		return (-1);
 	else
-		return (create_line(&stock[fd], line, ret));
+		return (create_line(&stock[fd], line));
 }

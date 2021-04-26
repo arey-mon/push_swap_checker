@@ -17,7 +17,7 @@
 # include <unistd.h>
 
 int				get_next_line(int fd, char **line);
-int				create_line(char **stock, char **line, int ret);
+int				create_line(char **stock, char **line);
 int				check_ret(int ret, int fd, char **stock, char **line);
 char			*ft_substr(char *s, unsigned int start, size_t len);
 char			*ft_substr_const(const char *s, unsigned int start, size_t len);

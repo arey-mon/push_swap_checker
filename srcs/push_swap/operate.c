@@ -14,19 +14,19 @@
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
 
-void	resolve_last_a(t_stock *stocka, t_main *main)
+void	resolve_last_a(t_stock *stocka, t_pgm *pgm)
 {
 	int		size;
 
 	size = stocka->size - 1;
-	find_biggest(&main->stockb);
-	if (find_biggest(&main->stockb) > (int)main->stockb.size / 2 - 1 &&
-			main->stockb.size > 2)
+	find_biggest(&pgm->stockb);
+	if (find_biggest(&pgm->stockb) > (int)pgm->stockb.size / 2 - 1 &&
+			pgm->stockb.size > 2)
 	{
-		while (find_biggest(&main->stockb) != 0)
-			reverse_rotate(&main->stockb, "rrb\n");
+		while (find_biggest(&pgm->stockb) != 0)
+			reverse_rotate(&pgm->stockb, "rrb\n");
 	}
-	while (stocka->a[size] < stocka->a[0] && stocka->a[size] > main->stockb.a[0]
+	while (stocka->a[size] < stocka->a[0] && stocka->a[size] > pgm->stockb.a[0]
 			&& stocka->a[size] != stocka->big)
 		reverse_rotate(stocka, "rra\n");
 }
@@ -54,14 +54,14 @@ int		check_order2(t_stock *stocka, t_stock *stockb, int i, int tmp)
 	return (0);
 }
 
-int		check_order(t_stock *stocka, t_stock *stockb, t_main *main)
+int		check_order(t_stock *stocka, t_stock *stockb, t_pgm *pgm)
 {
 	int	i;
 	int	tmp;
 
 	i = 0;
 	tmp = 0;
-	(void)main;
+	(void)pgm;
 	while (stocka->a[i] != stocka->big)
 	{
 		check_order2(stocka, stockb, i, tmp);

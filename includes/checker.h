@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:56:47 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/22 17:00:23 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/26 15:26:31 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,55 +37,55 @@ typedef struct	s_stock
 	long	nine_long;
 }				t_stock;
 
-typedef struct	s_main
+typedef struct	s_pgm
 {
 	t_stock			stocka;
 	t_stock			stockb;
-}				t_main;
+}				t_pgm;
 
 /*
  **  PROGRAM (PUSH_SWAP)
 */
-int				check_order(t_stock *stocka, t_stock *stockb, t_main *main);
+int				check_order(t_stock *stocka, t_stock *stockb, t_pgm *pgm);
 int				new_check_order(t_stock *stocka);
 void			find_median(t_stock *stock);
 void			find_median_ten(t_stock *stock);
-void			find_moves(t_stock *stocka, t_stock *stockb, t_main *main);
-void			push_long(t_main *main, t_stock *stocka, int div, int last_a);
-void			push_quarters(t_main *main, t_stock *stocka, int div);
-void			push_first_long(t_main *main);
-void			push_second_long(t_main *main);
-void			push_third_long(t_main *main);
-void			push_fourth_long(t_main *main);
-void			push_median_long(t_main *main);
-void			push_six_long(t_main *main);
-void			push_seven_long(t_main *main);
-void			push_eight_long(t_main *main);
-void			push_nine_long(t_main *main);
-void			push_first_quarter(t_main *main);
-void			push_second_quarter(t_main *main);
-void			push_third_quarter(t_main *main);
-void			push_fourth_quarter(t_main *main);
-void			resolve_last_a(t_stock *stocka, t_main *main);
+void			find_moves(t_stock *stocka, t_stock *stockb, t_pgm *pgm);
+void			push_long(t_pgm *pgm, t_stock *stocka, int div, int last_a);
+void			push_quarters(t_pgm *pgm, t_stock *stocka, int div);
+void			push_first_long(t_pgm *pgm);
+void			push_second_long(t_pgm *pgm);
+void			push_third_long(t_pgm *pgm);
+void			push_fourth_long(t_pgm *pgm);
+void			push_median_long(t_pgm *pgm);
+void			push_six_long(t_pgm *pgm);
+void			push_seven_long(t_pgm *pgm);
+void			push_eight_long(t_pgm *pgm);
+void			push_nine_long(t_pgm *pgm);
+void			push_first_quarter(t_pgm *pgm);
+void			push_second_quarter(t_pgm *pgm);
+void			push_third_quarter(t_pgm *pgm);
+void			push_fourth_quarter(t_pgm *pgm);
+void			resolve_last_a(t_stock *stocka, t_pgm *pgm);
 void			resolve_small(t_stock *stocka, t_stock *stockb);
 int				resolve_three(t_stock *stocka);
 int				resolve_four_b(t_stock *stocka);
 int				resolve_five(t_stock *stocka, t_stock *stockb);
 int				resolve_less_than_five(t_stock *stocka, t_stock *stockb);
 int				resolve_less_than_five_b(t_stock *stockb);
-int				solve_quarters(t_stock *stocka, t_main *main);
-int				solve_ten(t_stock *stocka, t_main *main);
+int				solve_quarters(t_stock *stocka, t_pgm *pgm);
+int				solve_ten(t_stock *stocka, t_pgm *pgm);
 int				find_biggest(t_stock *stock);
 int				find_smallest(t_stock *stock);
-void			get_malloc_size(t_stock *stocka, t_main *main);
+void			get_malloc_size(t_stock *stocka, t_pgm *pgm);
 int				stack_order_ps(t_stock *stock);
 int				stack_order_b(t_stock *stock);
 /*
  **  PROGRAM (CHECKER && SHARED)
 */
 int				check_duplicates(t_stock *stock);
-int				check_instructions(char *line, t_stock *stocka, t_stock *stockb,
-		int err);
+int				check_instructions(char *line, t_stock *stocka,
+		t_stock *stockb);
 void			execute_instructions(char *line, t_stock *stocka,
 		t_stock *stockb);
 int				ft_iswhitespace(char a);

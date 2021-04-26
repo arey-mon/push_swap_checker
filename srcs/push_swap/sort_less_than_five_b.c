@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:55:19 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/22 15:55:47 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/26 15:12:15 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,6 @@ int		resolve_four_b(t_stock *stockb)
 
 int		resolve_less_than_five_b(t_stock *stockb)
 {
-	int	i;
-
-	i = 0;
 	if (stockb->size == 4)
 		resolve_four_b(stockb);
 	if (stockb->size == 3)

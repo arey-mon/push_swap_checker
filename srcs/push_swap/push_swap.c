@@ -52,52 +52,52 @@ int		stack_order_ps(t_stock *stock)
 	return (ok == 1) ? 1 : 0;
 }
 
-void	free_program(t_main *main)
+void	free_program(t_pgm *pgm)
 {
-	free(main->stocka.a);
-	free(main->stockb.a);
+	free(pgm->stocka.a);
+	free(pgm->stockb.a);
 }
 
-int		resolve(t_main *main)
+int		resolve(t_pgm *pgm)
 {
-	if (stack_order_ps(&main->stocka) == 0)
+	if (stack_order_ps(&pgm->stocka) == 0)
 		return (0);
-	else if (main->stocka.size <= 5)
-		resolve_less_than_five(&main->stocka, &main->stockb);
-	else if (main->stocka.size < 10)
-		resolve_small(&main->stocka, &main->stockb);
-	else if (main->stocka.size <= 101)
+	else if (pgm->stocka.size <= 5)
+		resolve_less_than_five(&pgm->stocka, &pgm->stockb);
+	else if (pgm->stocka.size < 10)
+		resolve_small(&pgm->stocka, &pgm->stockb);
+	else if (pgm->stocka.size <= 101)
 	{
-		find_median(&main->stocka);
-		solve_quarters(&main->stocka, main);
+		find_median(&pgm->stocka);
+		solve_quarters(&pgm->stocka, pgm);
 	}
 	else
 	{
-		find_median_ten(&main->stocka);
-		solve_ten(&main->stocka, main);
+		find_median_ten(&pgm->stocka);
+		solve_ten(&pgm->stocka, pgm);
 	}
-	if (stack_order_ps(&main->stocka) != 0 ||
-			(stack_order_b(&main->stockb) != 0))
+	if (stack_order_ps(&pgm->stocka) != 0 ||
+			(stack_order_b(&pgm->stockb) != 0))
 		return (1);
 	return (0);
 }
 
 int		main(int ac, char **av)
 {
-	t_main			main;
+	t_pgm			pgm;
 
-	main.stocka.write = 1;
-	main.stockb.write = 1;
-	(ac > 1) ? init_stock(&main.stocka, &main.stockb, &av[1], ac) : exit(1);
-	free_program(&main);
-	if (init_stock(&main.stocka, &main.stockb, &av[1], ac))
+	pgm.stocka.write = 1;
+	pgm.stockb.write = 1;
+	(ac > 1) ? init_stock(&pgm.stocka, &pgm.stockb, &av[1], ac) : exit(1);
+	free_program(&pgm);
+	if (init_stock(&pgm.stocka, &pgm.stockb, &av[1], ac))
 	{
 		write(1, "Error\n", 6);
 		exit(1);
 	}
-	resolve(&main);
-	if (stack_order_ps(&main.stocka) || stack_order_ps(&main.stockb))
-		find_moves(&main.stocka, &main.stockb, &main);
-	free_program(&main);
+	resolve(&pgm);
+	if (stack_order_ps(&pgm.stocka) || stack_order_ps(&pgm.stockb))
+		find_moves(&pgm.stocka, &pgm.stockb, &pgm);
+	free_program(&pgm);
 	return (0);
 }

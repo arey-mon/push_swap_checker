@@ -6,7 +6,7 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 14:42:05 by apreymon          #+#    #+#             */
-/*   Updated: 2019/11/20 18:00:29 by apreymon         ###   ########.fr       */
+/*   Updated: 2021/04/26 14:54:10 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ void			*ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned char	*ddest;
 	unsigned char	*ssrc;
-	size_t			i;
 
-	i = 0;
 	ddest = (unsigned char *)dst;
 	ssrc = (unsigned char *)src;
 	if (!dst && !src)
