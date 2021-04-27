@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:17:43 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/22 15:33:01 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/27 12:46:41 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		read_instructions2(t_stock *stocka, int ret, int err)
 
 int		read_instructions(t_stock *stocka, t_stock *stockb, int ret, int err)
 {
-	char	line[4];
+	char	line[25];
 
 	err = 0;
 	ft_bzero(line, 3);
