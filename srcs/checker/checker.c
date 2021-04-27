@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:17:36 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/22 16:40:12 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/27 15:53:24 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int		main(int ac, char **av)
 
 	ret = 0;
 	err = 0;
+	if (stack_order(&pgm.stocka, err) == 0)
+		return (0);
 	(ac > 1) ? init_stock(&pgm.stocka, &pgm.stockb, &av[1], ac) : exit(1);
 	free_program(&pgm);
 	if (init_stock(&pgm.stocka, &pgm.stockb, &av[1], ac))

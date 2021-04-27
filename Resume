@@ -1,0 +1,10 @@
+ARG="4 67 3 87 23"; ./checker $ARG | ./push_swap $
+ARG
+== freeze when stack is order I guess (to further tests)
+ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
+== error
+. have to check_leaks again with 
+rr          lots of spaces
+lots of spaces            pa
+. test if pgm finishes well 
+$ARG ... ./push_swap | ./checker && vice-versa !!

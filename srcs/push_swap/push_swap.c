@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:17:15 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/22 16:40:28 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/27 15:52:09 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
 #include <string.h>
+#include <stdio.h>
 
 int		stack_order_b(t_stock *stock)
 {
@@ -60,10 +61,14 @@ void	free_program(t_pgm *pgm)
 
 int		resolve(t_pgm *pgm)
 {
+printf("into push_swap resolve\n");
 	if (stack_order_ps(&pgm->stocka) == 0)
 		return (0);
-	else if (pgm->stocka.size <= 5)
+	else if (pgm->stocka.size <= 5 && stack_order_ps(&pgm->stocka) != 0)
+	{
 		resolve_less_than_five(&pgm->stocka, &pgm->stockb);
+printf("2. resolve_five, stack_order_ps returns : %d\n", stack_order_ps(&pgm->stocka));
+	}
 	else if (pgm->stocka.size < 10)
 		resolve_small(&pgm->stocka, &pgm->stockb);
 	else if (pgm->stocka.size <= 101)
@@ -79,6 +84,8 @@ int		resolve(t_pgm *pgm)
 	if (stack_order_ps(&pgm->stocka) != 0 ||
 			(stack_order_b(&pgm->stockb) != 0))
 		return (1);
+	if (stack_order_ps(&pgm->stocka) == 0)
+		return (0);
 	return (0);
 }
 
@@ -88,6 +95,7 @@ int		main(int ac, char **av)
 
 	pgm.stocka.write = 1;
 	pgm.stockb.write = 1;
+	printf("Into push_swap\n");
 	(ac > 1) ? init_stock(&pgm.stocka, &pgm.stockb, &av[1], ac) : exit(1);
 	free_program(&pgm);
 	if (init_stock(&pgm.stocka, &pgm.stockb, &av[1], ac))
@@ -96,8 +104,13 @@ int		main(int ac, char **av)
 		exit(1);
 	}
 	resolve(&pgm);
+	printf("I quit resolve\n");
 	if (stack_order_ps(&pgm.stocka) || stack_order_ps(&pgm.stockb))
+	{
+		printf("I am going to find_moves, stack_order_ps returns : %d\n", stack_order_ps(&pgm.stocka));
 		find_moves(&pgm.stocka, &pgm.stockb, &pgm);
+	}
 	free_program(&pgm);
+	printf("I should end pgm\n");
 	return (0);
 }
