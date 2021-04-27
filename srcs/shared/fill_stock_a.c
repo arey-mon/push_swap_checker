@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:59:03 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/22 15:41:52 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/27 12:43:32 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,32 @@ int		get_args_size(char **arg, int ac)
 
 int		split_args(char *fill, t_stock *stock, int i)
 {
+	int		num;
+	char	*str;
+
+	while (*fill)
+	{
+		while (*fill && *fill == ' ')
+			fill++;
+		if (!*fill)
+			break ;
+		str = ft_strdup_char(fill, ' ');
+		if (ft_atoi_int(str, &num))
+		{
+			free(str);
+			return (1);
+		}
+		free(str);
+		stock->a[(i)++] = num;
+		stock->size++;
+		while (*fill && *fill != ' ')
+			fill++;
+	}
+	return (0);
+}
+
+/*
+{
 	int	num;
 
 	while (*fill)
@@ -64,6 +90,7 @@ int		split_args(char *fill, t_stock *stock, int i)
 	}
 	return (0);
 }
+*/
 
 int		check_duplicates(t_stock *stock)
 {

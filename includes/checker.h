@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:56:47 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/26 15:26:31 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/27 12:32:11 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void			execute_instructions(char *line, t_stock *stocka,
 int				ft_iswhitespace(char a);
 int				fill_stack(int ac, char **arg, t_stock *stock);
 int				ft_atoi_int(char *str, int *num);
+char			*ft_strdup_char(const char *str, char stop);
 int				ft_strlen_int(int *size);
 int				get_args_size(char **av, int ac);
 int				init_stock(t_stock *stocka, t_stock *stockb, char **arg,

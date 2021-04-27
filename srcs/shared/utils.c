@@ -6,12 +6,29 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:37:34 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/22 15:38:21 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/04/27 12:42:56 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
+
+char				*ft_strdup_char(const char *str, char stop)
+{
+	int		i;
+	char	*pt;
+
+	i = 0;
+	while (str[i] && str[i] != stop)
+		i++;
+	if (!(pt = malloc((i + 1) * sizeof(char))))
+		return (0);
+	i = -1;
+	while (str[++i] && str[i] != stop)
+		pt[i] = str[i];
+	pt[i] = '\0';
+	return (pt);
+}
 
 int		ft_strlen_int(int *size)
 {
