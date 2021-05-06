@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:17:43 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/27 15:54:04 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/05/06 17:59:42 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../../includes/checker.h"
 #include "../../libft/includes/libft.h"
 #include <string.h>
+#include <stdio.h>
 
 void	execute_instructions(char *line, t_stock *stocka, t_stock *stockb)
 {
@@ -83,16 +84,24 @@ int		read_instructions(t_stock *stocka, t_stock *stockb, int ret, int err)
 	{
 		if (check_instructions(&line[0], stocka, stockb))
 			err = 1;
-		while ((ret = read(STDIN_FILENO, line, 5)) >= 0)
+		while ((ret = read(STDIN_FILENO, line, 5)) > 0)//== 1)//>= 0)
 		{
+			/*
 			if (ret == 0)
 			{
 				stack_order(stocka, err);
 				break ;
 			}
+			*/
 			if (check_instructions(line, stocka, stockb))
 				err = 1;
 		}
+	}
+	printf("out of read, ret = %d\n", ret);
+	if (ret == 0)
+	{
+		err = 0;
+		stack_order(stocka, err);
 	}
 	if (err == 1)
 		return (1);

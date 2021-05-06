@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:17:15 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/27 15:52:09 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/05/06 11:51:49 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int		main(int ac, char **av)
 		find_moves(&pgm.stocka, &pgm.stockb, &pgm);
 	}
 	free_program(&pgm);
+	check_leaks();
 	printf("I should end pgm\n");
 	return (0);
 }

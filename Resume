@@ -1,10 +1,12 @@
-ARG="4 67 3 87 23"; ./checker $ARG | ./push_swap $
-ARG
-== freeze when stack is order I guess (to further tests)
+In subject, it is said pgm will be used like this : 
 ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
-== error
+so checker can print OK or KO if stack is sorted
+
+It will also be tested like this :
+ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
+
 . have to check_leaks again with 
 rr          lots of spaces
 lots of spaces            pa
-. test if pgm finishes well 
-$ARG ... ./push_swap | ./checker && vice-versa !!
+Are we supposed to print Error or should it work ??
+if we are supposed to print an error I can change ret = read == 1 in instructions

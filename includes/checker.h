@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:56:47 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/27 12:32:11 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/05/06 11:51:29 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct	s_pgm
 	t_stock			stockb;
 }				t_pgm;
 
+void	check_leaks();
 /*
  **  PROGRAM (PUSH_SWAP)
 */

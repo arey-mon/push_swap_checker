@@ -6,7 +6,7 @@
 /*   By: apollinereymond <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:59:03 by apolliner         #+#    #+#             */
-/*   Updated: 2021/04/27 12:43:32 by apolliner        ###   ########.fr       */
+/*   Updated: 2021/05/06 12:04:33 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,36 +61,6 @@ int		split_args(char *fill, t_stock *stock, int i)
 	}
 	return (0);
 }
-
-/*
-{
-	int	num;
-
-	while (*fill)
-	{
-		if (*fill == '-')
-		{
-			fill++;
-			if (!ft_isdigit(*fill))
-				return (1);
-			else
-				fill--;
-		}
-		if (!ft_isdigit(*fill) && *fill != '-' && *fill)
-			return (1);
-		else
-		{
-			if (ft_atoi_int(fill, &num))
-				return (1);
-			stock->a[i] = num;
-			stock->size++;
-			break ;
-		}
-		fill++;
-	}
-	return (0);
-}
-*/
 
 int		check_duplicates(t_stock *stock)
 {
